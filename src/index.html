@@ -1,0 +1,4052 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>REMORA Shield Security</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Icons -->
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- Markdown Parser -->
+<script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/lib/marked.umd.js"></script>
+
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js"></script>
+</head>
+<body>
+
+<!-- THEME TOGGLE -->
+<div class="theme-toggle" onclick="toggleTheme()">
+    <i class="fas fa-moon"></i>
+</div>
+
+<!-- NAVBAR with HAMBURGER MENU -->
+<div class="navbar-header">
+    <div class="logo">REMORA Shield</div>
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+
+<div class="navbar" id="navMenu">
+    <a href="#" class="active" onclick="showSection('home',this); toggleMenu()">
+        <i class="fa-solid fa-house"></i>الرئيسية</a>
+    <a href="#" onclick="showSection('goals',this); toggleMenu()">
+        <i class="fa-solid fa-bullseye"></i>الأهداف</a>
+    <a href="#" onclick="showSection('importance',this); toggleMenu()">
+        <i class="fa-solid fa-star"></i>التعليمات</a>
+    <a href="#" onclick="showSection('modules',this); toggleMenu()">
+        <i class="fa-solid fa-layer-group"></i>الموديولات</a>
+    <a href="#" onclick="showSection('exams',this); toggleMenu()">
+        <i class="fa-solid fa-file-circle-check"></i>الاختبارات</a>
+    <a href="#" onclick="showSection('deepTests',this); toggleMenu()">
+        <i class="fa-solid fa-flask"></i>الاختبارات العميقة</a>
+    <a href="#" onclick="showSection('tools',this); toggleMenu()">
+        <i class="fa-solid fa-tools"></i>الأدوات</a>
+    <a href="#" onclick="showSection('contact',this); toggleMenu()">
+        <i class="fa-solid fa-envelope"></i>تواصل</a>
+    <a href="#" onclick="logout(); toggleMenu()">
+        <i class="fa-solid fa-sign-out"></i>تسجيل الخروج</a>
+</div>
+<!-- شاشة تسجيل الدخول - تصميم أنيق أزرق فاتح -->
+
+
+<!-- شاشة تسجيل الدخول - تصميم أنيق أزرق فاتح -->
+
+<!-- شاشة تسجيل الدخول - تصميم أنيق أزرق فاتح مع تقليل المسافات -->
+
+
+<div id="loginScreen" class="login-overlay">
+    <div class="login-box">
+        
+        <!-- عنوان الأمن السيبراني -->
+        <div class="page-main-title">
+            <h1>
+                <span class="title-icon">🛡️</span>
+                الأمن السيبراني والهجمات الإلكترونية
+                <span class="title-icon">⚡</span>
+            </h1>
+   
+        </div>
+        
+        <div class="login-icon-top">🔐</div>
+        <h2>Login</h2>
+        <p class="subtitle">Please login to access our services</p>
+        
+        <!-- اسم المستخدم -->
+        <div class="input-group">
+            <label class="input-label">User Name</label>
+            <div class="input-wrapper">
+                <input type="text" id="username" class="login-input" placeholder="Enter your username" autocomplete="off">
+                <span class="input-icon">👤</span>
+            </div>
+        </div>
+        
+        <!-- كلمة المرور -->
+        <div class="input-group">
+            <label class="input-label">Password</label>
+            <div class="input-wrapper">
+                <input type="password" id="password" class="login-input" placeholder="Enter your password">
+                <span class="input-icon">🔒</span>
+            </div>
+            <div id="loginError" class="error-msg">⚠️ Please enter both username and password</div>
+        </div>
+        
+        <!-- Remember me & Forgot Password -->
+        <div class="remember-group">
+            <label class="remember-checkbox">
+                <input type="checkbox" id="rememberMe"> Remember me
+            </label>
+            <a href="#" class="forgot-link" onclick="forgotPassword(); return false;">Forgot Password?</a>
+        </div>
+        
+        <!-- زر Login -->
+        <button class="login-btn" onclick="checkLogin()">Login</button>
+        
+        <!-- Signup -->
+        <div class="signup-text">
+            Don't have an account? <a href="#" onclick="signupAlert(); return false;">Signup</a>
+        </div>
+        
+        <div id="welcomeMsg" class="welcome-msg"></div>
+        
+        <!-- صورة الدكتور في الأسفل -->
+        <div class="doctor-section">
+            <div class="doctor-image">
+                <img src="../assets/images/dr.jpg" alt="الدكتور">
+                <div class="doctor-badge">
+                    <span>👩‍🏫</span>
+                </div>
+            </div>
+            <div class="doctor-name">
+                <p class="supervisor">تحت إشراف</p>
+                <p class="name">أ.د/ نجلاء سعيد</p>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+
+
+   
+
+<div class="page-content">
+
+<!-- HOME -->
+
+<section id="home" class="section active">
+    <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712100.png"
+             style="width:150px;animation:float 3s infinite;">
+
+        <h1>مرحباً بك في REMORA Shield Security 👋</h1>
+        <p>تطبيق تعليمي يساعدك على فهم أساسيات الأمن السيبراني وحماية نفسك في العالم الرقمي.</p>
+        
+        <!-- STATS -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">6</div>
+                <div class="stat-label">موديولات تعليمية</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">30+</div>
+                <div class="stat-label">سؤال اختباري</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">أداة أمنية</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">مجاني</div>
+            </div>
+        </div>
+
+        <div class="home-cards">
+            <div class="home-card">
+                <i class="fa-solid fa-info-circle"></i>
+                <h4>ما هو التطبيق؟</h4>
+                <p>تطبيق تعليمي يشرح أساسيات الأمن السيبراني بطريقة سهلة ومبسطة.</p>
+            </div>
+            <div class="home-card">
+                <i class="fa-solid fa-clipboard-list"></i>
+                <h4>لماذا نتعلمه؟</h4>
+                <p>لأن الأمن السيبراني أصبح مهارة أساسية لحماية معلوماتنا وحساباتنا الرقمية.</p>
+            </div>
+            <div class="home-card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h4>ماذا يقدم لك؟</h4>
+                <p>نصائح لحماية الحسابات، فهم أنواع الهجمات، وإدارة البيانات بأمان.</p>
+            </div>
+            <div class="home-card">
+                <i class="fa-solid fa-lightbulb"></i>
+                <h4>نصائح مهمة</h4>
+                <p>استخدام كلمات مرور قوية، تفعيل المصادقة الثنائية، وتحديث البرامج بانتظام.</p>
+            </div>
+        </div>
+        
+        <div class="progress-container">
+            <h3>📈 تقدمك في التطبيق</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 20%"></div>
+            </div>
+            <p id="progressText">لقد أكملت 20% من التطبيق</p>
+        </div>
+        
+<!-- INFOGRAPHIC SECTION -->
+<div class="infographic">
+    <h3 style="margin-top:25px;">📊 مهام الأمن السيبراني</h3>
+    <img src="../otherImage.jpeg"
+         alt="Infographic"
+         class="infographic-img">
+</div>
+    </div>
+</section>
+
+<!-- GOALS - تم التعديل -->
+<section id="goals" class="section">
+    <div class="card">
+        <img class="sec-img" src="https://cdn-icons-png.flaticon.com/512/4727/4727424.png" alt="أهداف البرنامج">
+        <h2>🎯 أهداف البرنامج التعليمية</h2>
+        
+        <div class="content-text">
+            <div class="importance-grid">
+                <div class="importance-card">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <h4>التعلم الشامل</h4>
+                    <p>تغطية جميع جوانب الأمن السيبراني من الأساسيات إلى المواضيع المتقدمة</p>
+                </div>
+                
+                <div class="importance-card">
+                    <i class="fa-solid fa-shield-alt"></i>
+                    <h4>التطبيق العملي</h4>
+                    <p>توفير أدوات ونماذج عملية لتطبيق المعرفة في الحياة اليومية</p>
+                </div>
+                
+                <div class="importance-card">
+                    <i class="fa-solid fa-users"></i>
+                    <h4>بناء الوعي</h4>
+                    <p>تطوير الوعي الأمني لدى الأفراد والمؤسسات للحد من الهجمات</p>
+                </div>
+                
+                <div class="importance-card">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <h4>التقييم المستمر</h4>
+                    <p>تقييم المعرفة من خلال اختبارات تفاعلية ومتابعة التقدم</p>
+                </div>
+            </div>
+            
+            <h3 style="margin-top:30px; color:#6ca8ff;">🎯 الأهداف التعليمية للموديولات:</h3>
+            
+            <div class="goal-item">
+                <h4><span class="goal-number">1</span> الموديول الأول: المفاهيم الأساسية</h4>
+                <ul class="module-points">
+                    <li>فهم ماهية الأمن السيبراني وأهميته</li>
+                    <li>التعرف على أنواع التهديدات الداخلية والخارجية</li>
+                    <li>إتقان عناصر مثلث الأمن (CIA)</li>
+                    <li>التمييز بين الهجوم والتهديد والاختراق</li>
+                    <li>فهم أنواع المصادقة والتشفير</li>
+                </ul>
+            </div>
+            
+            <div class="goal-item">
+                <h4><span class="goal-number">2</span> الموديول الثاني: التهديدات السيبرانية</h4>
+                <ul class="module-points">
+                    <li>التعرف على أنواع البرمجيات الخبيثة</li>
+                    <li>فهم طرق عمل الفيروسات والديدان</li>
+                    <li>معرفة أساليب التصيد الاحتيالي</li>
+                    <li>فهم هجمات Zero-Day والهندسة الاجتماعية</li>
+                    <li>تعلم استراتيجيات الوقاية من الهجمات</li>
+                </ul>
+            </div>
+            
+            <div class="goal-item">
+                <h4><span class="goal-number">3</span> الموديول الثالث: حماية الحسابات</h4>
+                <ul class="module-points">
+                    <li>إنشاء كلمات مرور قوية وآمنة</li>
+                    <li>استخدام أدوات إدارة كلمات المرور</li>
+                    <li>تفعيل المصادقة الثنائية (2FA)</li>
+                    <li>التعرف على علامات اختراق الحسابات</li>
+                    <li>ضبط إعدادات الخصوصية في المنصات</li>
+                </ul>
+            </div>
+            
+            <div class="goal-item">
+                <h4><span class="goal-number">4</span> الموديول الرابع: أمن الشبكات</h4>
+                <ul class="module-points">
+                    <li>فهم أنواع الشبكات ومكوناتها</li>
+                    <li>معرفة بروتوكولات الاتصال والإنترنت</li>
+                    <li>التعرف على تهديدات الشبكات اللاسلكية</li>
+                    <li>إتقان أساسيات تأمين الشبكات المنزلية</li>
+                    <li>استخدام الجدار الناري (Firewall)</li>
+                </ul>
+            </div>
+            
+            <div class="goal-item">
+                <h4><span class="goal-number">5</span> الموديول الخامس: أمن البريد والتطبيقات</h4>
+                <ul class="module-points">
+                    <li>التعرف على مخاطر البريد الإلكتروني غير الآمن</li>
+                    <li>اكتشاف الرسائل الاحتيالية</li>
+                    <li>حماية التطبيقات من التهديدات</li>
+                    <li>إدارة صلاحيات التطبيقات</li>
+                    <li>الاستخدام الآمن للمتاجر الرقمية</li>
+                </ul>
+            </div>
+            
+            <div class="goal-item">
+                <h4><span class="goal-number">6</span> الموديول السادس: الوعي والتثقيف الذاتي</h4>
+                <ul class="module-points">
+                    <li>تنمية الوعي السيبراني الشخصي</li>
+                    <li>ممارسات السلوك الآمن على الإنترنت</li>
+                    <li>نشر الوعي داخل المؤسسات</li>
+                    <li>استخدام المنصات الرقمية للتعلم الذاتي</li>
+                    <li>المتابعة والتحديث المستمر</li>
+                </ul>
+            </div>
+        </div>
+   
+<!-- INFOGRAPHIC SECTION -->
+<div class="infographic">
+    <h3 style="margin-top:25px;">📊 المهارات الأساسية للأمن السيبراني</h3>
+    <img src="../otherImage2.jpeg"
+         alt="Infographic"
+         class="infographic-img">
+ </div>
+    </div>
+</section>
+
+<!-- INSTRUCTIONS & SKILLS - تم التعديل -->
+<section id="importance" class="section">
+    <div class="card">
+        <div style="position: relative;">
+            <img src="https://cdn-icons-png.flaticon.com/512/702/702797.png"
+                 id="bulb-importance-infographic"
+                 onclick="showInfographic('importance')"
+                 alt="لمبة التعليمات"
+                 style="position: absolute; top: 10px; right: 10px; width: 40px; height: 40px; cursor: pointer; transition: 0.3s; filter: grayscale(100%); opacity: 0.7; z-index: 10;">
+        </div>
+        <img class="sec-img" src="https://cdn-icons-png.flaticon.com/512/2272/2272805.png" alt="أمن سيبراني">
+        <h2>🛡️ تعليمات ومهارات أساسية في الأمن السيبراني</h2>
+        
+        <div class="importance-grid">
+            <div class="importance-card">
+                <i class="fa-solid fa-key"></i>
+                <h4>تصفح الأهداف و المهارات</h4>
+                <p>اكتشف معنا أهداف هذا البرنامج وطوّر مهاراتك خطوة بخطوة نحو مستقبل أكثر أمانًا وإبداعًا في عالم الأمن السيبراني."
+</p>
+            </div>
+            
+            <div class="importance-card">
+                <i class="fa-solid fa-envelope-open-text"></i>
+                <h4>إتمام كل موديول قبل الانتقال للذي يليه"</h4>
+                <p>"لتضمن الاستفادة القصوى من البرنامج، يجب إنهاء كل موديول بالكامل قبل الانتقال إلى الموديول التالي."
+</p>
+            </div>
+            
+            <div class="importance-card">
+                <i class="fa-solid fa-shield-virus"></i>
+                <h4>الدعم الفني هنا لمساعدتك</h4>
+                <p>"يمكنك التواصل مع فريق الدعم الفني في أي وقت عند الحاجة، لنضمن لك تجربة سلسة ومريحة."
+</p>
+            </div>
+            
+            <div class="importance-card">
+                <i class="fa-solid fa-wifi"></i>
+                <h4>روبوت المحادثة في خدمتك</h4>
+                <p>"استخدم روبوت المحادثة للحصول على إجابات سريعة لأسئلتك دون الحاجة للانتظار."
+</p>
+            </div>
+        </div>
+        
+        <div class="content-text" style="margin-top:30px;">
+            <h3 style="color:#6ca8ff;">📋 تعليمات مهمة يجب الالتزام بها:</h3>
+            
+            <div class="stats-grid" style="margin:20px 0;">
+                <div class="stat-card" style="background:linear-gradient(light blue);">
+                    <div class="stat-number">✔</div>
+                    <div class="stat-label">فعّل التحقق بخطوتين دائماً</div>
+                </div>
+                <div class="stat-card" style="background:linear-gradient(teal blue );">
+                    <div class="stat-number">✔</div>
+                    <div class="stat-label">لا تشارك بياناتك الشخصية</div>
+                </div>
+                <div class="stat-card" style="background:linear-gradient(sky blue);">
+                    <div class="stat-number">✔</div>
+                    <div class="stat-label">تأكد من المواقع قبل إدخال بياناتك</div>
+                </div>
+            </div>
+            
+            <h3 style="color:#6ca8ff; margin-top:30px;">🎯 مهارات يجب أن يمتلكها مستخدم الإنترنت</h3>
+            
+            <div class="module-content">
+                <div class="module-section">
+                    <h4>🔍 مهارة اكتشاف الاحتيال:</h4>
+                    <p>القدرة على التمييز بين الرسائل الحقيقية والمزيفة، ومعرفة علامات التصيد الإلكتروني.</p>
+                </div>
+                
+                <div class="module-section">
+                    <h4>🧠 الوعي السيبراني:</h4>
+                    <p>فهم المخاطر الرقمية والتصرف بحكمة أثناء استخدام التطبيقات والمواقع المختلفة.</p>
+                </div>
+                
+                <div class="module-section">
+                    <h4>⚙️ مهارة التعامل مع الإعدادات الأمنية:</h4>
+                    <p>التحكم في إعدادات الخصوصية، الأذونات، وتحديثات الأمان على الأجهزة.</p>
+                </div>
+            </div>
+            
+            <div class="warning-badge" style="margin-top:20px;">
+                <i class="fa-solid fa-exclamation-triangle"></i> 
+                <strong>تنبيه:</strong> الإهمال في تطبيق التعليمات الأمنية قد يؤدي لاختراق حساباتك بسهولة!
+            </div>
+            
+             <div class="success-badge" style="margin-top:15px;">
+                 <i class="fa-solid fa-check-circle"></i> 
+                 <strong>نصيحة:</strong> الوعي والالتزام بالتعليمات هما خط الدفاع الأول ضد الهجمات الإلكترونية.
+             </div>
+
+            <div id="infographicModal-importance" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); z-index: 9999; justify-content: center; align-items: center; cursor: pointer;" onclick="closeModal()">
+                <div style="position: relative; max-width: 90%; max-height: 90%;">
+                    <img src="../assets/images/التعليمات.jpg" alt="تعليمات الأمن السيبراني" style="max-width: 100%; max-height: 90vh; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); border: 2px solid white;">
+                    <div style="position: absolute; bottom: -35px; left: 50%; transform: translateX(-50%); color: white; background: rgba(0,0,0,0.6); padding: 6px 14px; border-radius: 30px; font-size: 12px; white-space: nowrap;">
+                        ✖ اضغط في أي مكان للإغلاق
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MODULES LIST -->
+<section id="modules" class="section">
+    <div class="card">
+        <h2 style="text-align:center;">📚 الموديولات التدريبية</h2>
+        <p style="text-align:center; font-size:18px; color:#6ca8ff;">اختر الموديول الذي تريد دراسته:</p>
+        
+        <div class="modules-grid">
+            <div class="module-card" onclick="showModule1()">
+                <i class="fa-solid fa-book" style="font-size:40px; color:#2f6bff; margin-bottom:10px;"></i>
+                <h3>الموديول 1</h3>
+                <p>المفاهيم الأساسية في الأمن السيبراني</p>
+                <p style="color:#6ca8ff; font-size:14px;">📖 7 أقسام رئيسية</p>
+            </div>
+            <div class="module-card" onclick="showModule2()">
+                <i class="fa-solid fa-virus" style="font-size:40px; color:#2f6bff; margin-bottom:10px;"></i>
+                <h3>الموديول 2</h3>
+                <p>التهديدات السيبرانية والبرمجيات الخبيثة</p>
+                <p style="color:#6ca8ff; font-size:14px;">📖 9 أقسام رئيسية</p>
+            </div>
+            <div class="module-card" onclick="showModule3()">
+                <i class="fa-solid fa-lock" style="font-size:40px; color:#2f6bff; margin-bottom:10px;"></i>
+                <h3>الموديول 3</h3>
+                <p>حماية الحسابات والبيانات الشخصية</p>
+                <p style="color:#6ca8ff; font-size:14px;">📖 محتوى شامل</p>
+            </div>
+            <div class="module-card" onclick="showModule4()">
+                <i class="fa-solid fa-network-wired" style="font-size:40px; color:#2f6bff; margin-bottom:10px;"></i>
+                <h3>الموديول 4</h3>
+                <p>أمن الشبكات والاتصال بالإنترنت</p>
+                <p style="color:#6ca8ff; font-size:14px;">📖 8 أقسام رئيسية</p>
+            </div>
+            <div class="module-card" onclick="showModule5()">
+                <i class="fa-solid fa-envelope" style="font-size:40px; color:#2f6bff; margin-bottom:10px;"></i>
+                <h3>الموديول 5</h3>
+                <p>أمن البريد الإلكتروني والتطبيقات</p>
+                <p style="color:#6ca8ff; font-size:14px;">📖 محتوى شامل</p>
+            </div>
+            <div class="module-card" onclick="showModule6()">
+                <i class="fa-solid fa-brain" style="font-size:40px; color:#2f6bff; margin-bottom:10px;"></i>
+                <h3>الموديول 6</h3>
+                <p>الوعي السيبراني والتثقيف الذاتي</p>
+                <p style="color:#6ca8ff; font-size:14px;">📖 8 أقسام رئيسية</p>
+            </div>
+        </div>
+        
+        <div style="text-align:center; margin-top:30px;">
+            <button class="btn" onclick="showExams()">
+                <i class="fa-solid fa-file-alt"></i> اختبار معرفتك
+            </button>
+            <button class="btn btn-secondary" onclick="showSection('home')" style="margin-right:10px;">
+                <i class="fa-solid fa-home"></i> العودة للرئيسية
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- MODULE 1 CONTENT -->
+<section id="module1" class="section">
+    <div class="card">
+        <div class="content-text">
+            <h2 style="text-align:center; color:#6ca8ff;">⭐ الموديول الأول: المفاهيم الأساسية في الأمن السيبراني</h2>
+            
+            <div class="module-content">
+                <div class="module-section">
+<!-- INFOGRAPHIC SECTION -->
+<div class="infographic">
+    <h3 style="margin-top:25px;"> 📊 انفوجرافيك اهداف الموديول الاول</h3>
+    <img src="../assets/images/اهداف الموديول الاول.jpg"
+         alt="Infographic"
+         class="infographic-img">
+</div>
+<!-- اللمبة التفاعلية -->
+<div style="text-align: center; margin: 20px auto;">
+    <h3 style="color:#1f3c88;">📊 الإنفوجرافيك التفاعلي</h3>
+    <p> اضغط على المصباح لرؤية الإنفوجرافيك الخاص بالموديول بتلخيص المديول</p>
+    
+    <img src="https://cdn-icons-png.flaticon.com/512/702/702797.png" 
+         id="bulb-module1-infographic"
+         style="width:80px; cursor:pointer; transition:0.3s; filter:grayscale(100%); opacity:0.6;"
+         onclick="showInfographic('module1')"
+         alt="الإنفوجرافيك">
+</div>
+
+<!-- نافذة عرض الإنفوجرافيك -->
+<div id="infographicModal-module1" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); z-index: 9999; justify-content: center; align-items: center; cursor: pointer;" onclick="closeModal()">
+    <div style="position: relative; max-width: 90%; max-height: 90%;">
+        <img id="infographicImg" src="../assets/images/inf1.jpg" alt="الإنفوجرافيك" style="max-width: 100%; max-height: 90vh; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); border: 2px solid white;">
+        <div style="position: absolute; bottom: -35px; left: 50%; transform: translateX(-50%); color: white; background: rgba(0,0,0,0.6); padding: 6px 14px; border-radius: 30px; font-size: 12px; white-space: nowrap;">
+            ✖ اضغط في أي مكان للإغلاق
+        </div>
+    </div>
+</div>
+
+
+
+                    <h4>1. مفهوم الأمن السيبراني وأهميته في حماية البيانات</h4>
+                    <p><strong>ما هو الأمن السيبراني؟</strong></p>
+                    <p>الأمن السيبراني هو مجموعة من الإجراءات والعمليات والتقنيات التي تهدف إلى حماية:</p>
+                    <ul class="module-points">
+                        <li>الأجهزة (الحواسيب – الهواتف – الخوادم)</li>
+                        <li>الشبكات والاتصالات</li>
+                        <li>البيانات والمعلومات</li>
+                        <li>البرامج والأنظمة</li>
+                    </ul>
+                    <p><strong>لماذا الأمن السيبراني مهم؟</strong></p>
+                    <p>لأن العالم اليوم يعتمد بشكل كبير على التكنولوجيا. كل شيء تقريبًا أصبح رقميًا:</p>
+                    <ul class="module-points">
+                        <li>المعاملات البنكية</li>
+                        <li>حسابات التواصل</li>
+                        <li>السجلات الصحية</li>
+                        <li>البيانات الشخصية</li>
+                        <li>المعلومات الحساسة في الشركات</li>
+                    </ul>
+                </div>
+                
+                <div class="module-section">
+                    <h4>2. أنواع التهديدات: داخلية – خارجية</h4>
+                    <div class="comparison-table">
+                        <div class="comparison-header">مقارنة بين التهديدات الداخلية والخارجية</div>
+                        <div class="comparison-row">
+                            <div class="comparison-cell" style="background:var(--bg-dark); color:white;"><strong>النوع</strong></div>
+                            <div class="comparison-cell"><strong>التهديدات الداخلية</strong></div>
+                            <div class="comparison-cell"><strong>التهديدات الخارجية</strong></div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="comparison-cell"><strong>المصدر</strong></div>
+                            <div class="comparison-cell">داخل المؤسسة</div>
+                            <div class="comparison-cell">خارج المؤسسة</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="comparison-cell"><strong>الأمثلة</strong></div>
+                            <div class="comparison-cell">موظف حالي أو سابق</div>
+                            <div class="comparison-cell">هكرز، مجرمون إلكترونيون</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="comparison-cell"><strong>طرق الحماية</strong></div>
+                            <div class="comparison-cell">مراقبة الصلاحيات، التدريب</div>
+                            <div class="comparison-cell">جدران نارية، أنظمة كشف التسلل</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="module-section">
+                    <h4>3. عناصر مثلث الأمن (السرية – التكامل – التوافر)</h4>
+                    <p>المعروف أيضًا باسم CIA Triad، وهو أساس أي نظام أمني:</p>
+                    
+                    <div class="importance-grid" style="margin-top:20px;">
+                        <div class="importance-card">
+                            <i class="fa-solid fa-user-secret"></i>
+                            <h4>السرية (Confidentiality)</h4>
+                            <p>حماية المعلومات من الوصول غير المصرح به</p>
+                        </div>
+                        
+                        <div class="importance-card">
+                            <i class="fa-solid fa-shield-alt"></i>
+                            <h4>التكامل (Integrity)</h4>
+                            <p>الحفاظ على صحة البيانات وعدم التلاعب بها</p>
+                        </div>
+                        
+                        <div class="importance-card">
+                            <i class="fa-solid fa-check-circle"></i>
+                            <h4>التوافر (Availability)</h4>
+                            <p>ضمان توفر الأنظمة والبيانات عند الحاجة</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="module-section">
+                    <h4>4. الفرق بين الهجوم والتهديد والاختراق</h4>
+                    <ul class="module-points">
+                        <li><strong>التهديد (Threat):</strong> احتمال حدوث حادث أمني</li>
+                        <li><strong>الهجوم (Attack):</strong> تنفيذ فعلي من المهاجم</li>
+                        <li><strong>الاختراق (Breach):</strong> نجاح الهجوم والوصول للبيانات</li>
+                    </ul>
+                    <p style="color:#6ca8ff; font-weight:bold; margin-top:15px;">📊 المسار: تهديد → هجوم → اختراق</p>
+                </div>
+                
+                <div class="module-section">
+                    <h4>5. المصادقة وأنواعها</h4>
+                    <div class="enhanced-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>النوع</th>
+                                    <th>المثال</th>
+                                    <th>مستوى الأمان</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>شيء تعرفه</td>
+                                    <td>كلمة المرور، PIN</td>
+                                    <td>منخفض</td>
+                                </tr>
+                                <tr>
+                                    <td>شيء تملكه</td>
+                                    <td>هاتف، بطاقة ذكية</td>
+                                    <td>متوسط</td>
+                                </tr>
+                                <tr>
+                                    <td>شيء أنت عليه</td>
+                                    <td>بصمة، وجه، عين</td>
+                                    <td>عالي</td>
+                                </tr>
+                                <tr>
+                                    <td>المصادقة متعددة العوامل</td>
+                                    <td>مزيج من الأنواع</td>
+                                    <td>عالي جداً</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="module-section">
+                    <h4>6. مفهوم التشفير ودوره في حماية البيانات</h4>
+                    <p><strong>ما هو التشفير؟</strong></p>
+                    <p>عملية تحويل المعلومات إلى صيغة غير مفهومة باستخدام خوارزميات رياضية.</p>
+                    
+                    <div class="tip-badge">
+                        <i class="fa-solid fa-lightbulb"></i>
+                        <strong>نصيحة:</strong> دائماً استخدم اتصالات HTTPS المشفرة عند زيارة المواقع
+                    </div>
+                </div>
+                
+                <div class="module-section">
+                    <h4>7. الخصوصية والفرق بينها وبين الحماية الأمنية</h4>
+                    <ul class="module-points">
+                        <li><strong>الخصوصية:</strong> من يحق له استخدام البيانات؟</li>
+                        <li><strong>الأمن:</strong> كيف نحمي البيانات من الوصول غير المصرح؟</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- ===== HINT SECTION - MODULE 1 ===== -->
+<div class="hint-section" style="text-align:center; margin:30px auto; font-family:Arial;">
+
+    <h3 style="color:#1f3c88;">💡تلميحة الكترونيه</h3>
+    <p>اضغط على المصباح لرؤية تلميحة مفيدة حول هذا الموديول</p>
+
+    <!-- اللمبة -->
+    <img 
+        src="https://cdn-icons-png.flaticon.com/512/702/702797.png"
+        id="bulb-module1"
+        style="width:80px; cursor:pointer; transition:0.3s; filter:grayscale(100%); opacity:0.6;"
+        onclick="toggleHintModule1()"
+        alt="لمبة التلميحة"
+    >
+
+    <!-- التلميحة -->
+    <div 
+        id="module1-hint"
+        style="display:none; margin-top:15px; padding:15px; background:#f4f8ff; border-radius:12px; text-align:right;"
+    >
+        <h4>🛡️ تلميحة الموديول الأول: الدفاع متعدد الطبقات</h4>
+        <p>
+            لا يعتمد الأمن السيبراني على وسيلة حماية واحدة فقط،  
+            بل على <strong>عدة طبقات أمنية</strong> تعمل معًا.
+        </p>
+        <ul>
+            <li>👤 توعية المستخدم</li>
+            <li>🔑 مصادقة قوية (MFA)</li>
+            <li>🌐 حماية الشبكة (Firewalls)</li>
+            <li>💾 تشفير البيانات والنسخ الاحتياطي</li>
+        </ul>
+        <p>
+            إذا فشلت طبقة، تمنع الطبقات الأخرى حدوث الاختراق.
+        </p>
+    </div>
+
+</div>
+<!-- أيقونة السؤال المتألقة -->
+<div style="text-align: center; margin: 25px auto;">
+    <div style="position: relative; display: inline-block;">
+        <!-- الصورة الرئيسية -->
+        <img src="../assets/images/que1.jpg" 
+             class="question-icon"
+             alt="سؤال مهم"
+             style="width: 90px; height: 90px; object-fit: cover; border-radius: 50%; cursor: pointer; box-shadow: 0 0 15px rgba(255,215,0,0.5), 0 4px 12px rgba(0,0,0,0.2); transition: all 0.3s ease; animation: glowPulse 1.2s infinite;">
+        
+        
+            
+        </div>
+    </div>
+    <p style="color: #4a6fa5; margin-top: 10px; font-size: 0.85rem;">✨ اضغط على الصورة لرؤية السؤال ✨</p>
+</div>
+
+<!-- نافذة عرض السؤال -->
+<div class="question-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(4px); z-index: 9999; justify-content: center; align-items: center; cursor: pointer;" onclick="closeQuestionModal()">
+    <div style="background: white; border-radius: 28px; max-width: 450px; width: 85%; padding: 35px 30px; text-align: center; box-shadow: 0 25px 50px rgba(0,0,0,0.3); cursor: default; animation: fadeInScale 0.3s ease;" onclick="event.stopPropagation()">
+        <div style="background: linear-gradient(135deg, #ffd89b, #f3b33d); width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: -50px auto 15px auto; box-shadow: 0 8px 20px rgba(243,179,61,0.4);">
+            <span style="font-size: 2rem;">❓</span>
+        </div>
+        <h3 style="color: #b8860b; margin-bottom: 20px; font-size: 1.4rem;">سؤال مهم</h3>
+        <p style="color: #2d3748; font-size: 1.1rem; line-height: 1.6; margin-bottom: 25px;">
+            <strong>ما هو التشفير؟ وما دوره في حماية البيانات؟</strong>
+        </p>
+        <button onclick="closeQuestionModal()" style="background: linear-gradient(135deg, #f3b33d, #e6a017); border: none; padding: 10px 30px; border-radius: 40px; color: white; font-weight: bold; cursor: pointer; font-size: 1rem; transition: all 0.2s; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+            فهمت ✅
+        </button>
+    </div>
+</div>
+
+
+<!-- أيقونة الصوت للإجابة (تشغيل/إيقاف) -->
+<div style="text-align: center; margin: 20px auto;">
+    <div class="audio-icon" onclick="toggleAudio(this)" style="position: relative; display: inline-block; cursor: pointer;">
+        <div style="width: 70px; height: 70px; background: linear-gradient(145deg, #667eea, #764ba2); border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 6px 14px rgba(102,126,234,0.4); transition: all 0.3s ease; animation: softPulse 1.5s infinite;">
+            <div class="audio-icon-emoji" style="font-size: 2rem; color: white;">🎧</div>
+        </div>
+        <div style="position: absolute; bottom: -5px; right: -5px; background: #48bb78; width: 20px; height: 20px; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.2);"></div>
+    </div>
+    <p class="audio-status" style="color: #667eea; margin-top: 12px; font-size: 0.8rem; font-weight: 500;">🔊 اضغط للاستماع للإجابة</p>
+</div>
+
+<!-- عنصر الصوت المخفي -->
+<audio class="answer-audio" src="../assets/audio/aud1.mp3" preload="auto"></audio>
+
+
+
+
+
+
+
+
+<!-- ===== MODULE PODCAST ===== -->
+<div class="module-podcast">
+
+    <h3>🎧 بودكاست الموديول</h3>
+    <p>
+        حلقة صوتية تشرح مفهوم الأمن السيبراني وأهميته في حماية
+        البيانات والمستخدمين.
+    </p>
+
+    <a 
+        href="https://omny.fm/shows/sadacast/3947c27d-1689-4421-aefa-afc9016faf5a"
+        target="_blank"
+        class="podcast-link"
+    >
+        ▶️ الاستماع إلى البودكاست
+    </a>
+
+</div>
+<!-- INFOGRAPHIC SECTION -->
+<div class="infographic">
+    <h3 style="margin-top:25px;">📊 إنفوجرافيك مفاهيم اساسية</h3>
+    <img src="../assets/images/الموديول الاول2.jpg"
+         alt="Infographic"
+         class="infographic-img">
+</div>
+<!-- VIDEO FOR MODULE 1 -->
+<h3 style="margin-top:25px; text-align:center;">🎥 فيديو شرح الموديول الأول</h3>
+
+<video controls width="100%" style="
+    border-radius:12px;
+    margin-top:15px;
+    box-shadow:4px 4px 12px #cbd6f0;
+">
+    <source src="../assets/videos/شرح الموديول الأول.mp4" type="video/mp4">
+    المتصفح الخاص بك لا يدعم تشغيل الفيديو.
+</video>
+            
+            <div style="text-align:center;margin-top:20px;">
+                <button class="btn" onclick="showExamForModule(1)">
+                    <i class="fa-solid fa-graduation-cap"></i> ابدأ اختبار الموديول
+                </button>
+                <button class="btn btn-secondary" onclick="showSection('modules')" style="margin-right:10px;">
+                    <i class="fa-solid fa-arrow-right"></i> عرض جميع الموديولات
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MODULE 2 CONTENT -->
+<section id="module2" class="section">
+    <div class="card">
+        <div class="content-text">
+            <h2 style="text-align:center; color:#6ca8ff;">🌐 الموديول الثاني: التهديدات السيبرانية والبرمجيات الخبيثة</h2>
+            
+            <div class="module-content">
+                <div class="module-section">
+                    <!-- INFOGRAPHIC SECTION -->
+<div class="infographic">
+    <h3 style="margin-top:25px;"> 📊 انفوجرافيك اهداف الموديول الثاني</h3>
+    <img src="../assets/images/gool2.jpg"
+         alt="Infographic"
+         class="infographic-img">
+</div>
+<!-- لمبة -->
+<div style="text-align:center;">
+    <h3>📊 ملخص الموديول الثاني</h3>
+    <p>اضغط على المصباح لرؤية الفيديو</p>
+
+    <img src="https://cdn-icons-png.flaticon.com/512/702/702797.png"
+         id="bulb-module2-summary"
+         style="width:80px;cursor:pointer;"
+         onclick="showModule2Video()">
+</div>
+
+<!-- مودال الفيديو -->
+<div id="videoModal" style="
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.9);
+    justify-content:center;
+    align-items:center;
+    z-index:2000;
+">
+
+    <video id="module2Video" controls style="width:80%; max-width:700px; border-radius:12px;">
+        <source src="../assets/videos/modelinfo2.mp4" type="video/mp4">
+        المتصفح لا يدعم الفيديو
+    </video>
+
+</div>
+
+
+                    <h4>1. تعريف البرمجيات الخبيثة ومفهوم الهجمات السيبرانية</h4>
+                    <p><strong>البرمجيات الخبيثة (Malware):</strong> أي برنامج أو كود ضار صُمّم لإيذاء أجهزة الحاسوب أو الشبكات.</p>
+                    <p><strong>الهجمات السيبرانية:</strong> محاولات اختراق الأنظمة الرقمية بهدف السرقة، التخريب، أو التجسس.</p>
+                </div>
+                
+                <div class="module-section">
+                    <h4>2. الفيروسات وطريقة عملها</h4>
+                    <ul class="module-points">
+                        <li>تسلل إلى ملفات سليمة</li>
+                        <li>التكرار الذاتي</li>
+                        <li>الانتشار عبر الملفات المصابة</li>
+                        <li>تحتاج تدخل المستخدم للتفعيل</li>
+                    </ul>
+                </div>
+                
+                <div class="module-section">
+                    <h4>3. الديدان (Worms) وكيفية انتشارها عبر الشبكات</h4>
+                    <ul class="module-points">
+                        <li>لا تحتاج تدخل المستخدم</li>
+                        <li>تنتشر بشكل مستقل وسريع</li>
+                        <li>تستغل الثغرات الأمنية</li>
+                        <li>تسبب استهلاكاً كبيراً للشبكة</li>
+                    </ul>
+                </div>
+                
+                <div class="module-section">
+                    <h4>4. أحصنة طروادة (Trojans) وآلية الخداع</h4>
+                    <ul class="module-points">
+                        <li>تظهر كبرامج شرعية</li>
+                        <li>تحمل وظائف خبيثة مخفية</li>
+                        <li>تفتح "أبواب خلفية" للمخترقين</li>
+                        <li>يمكنها سرقة البيانات أو السيطرة على الجهاز</li>
+                    </ul>
+                </div>
+                
+                <div class="module-section">
+                    <h4>5. برامج الفدية (Ransomware) وتأثيرها</h4>
+                    <div class="warning-badge">
+                        <i class="fa-solid fa-exclamation-triangle"></i>
+                        <strong>خطر:</strong> تشفير الملفات وطلب فدية لفك التشفير
+                    </div>
+                </div>
+                
+                <div class="module-section">
+                    <h4>6. هجمات Zero-Day</h4>
+                    <p>ثغرات في البرامج لم يكتشفها المطورون بعد، يستغلها المهاجمون قبل إصدار التحديثات.</p>
+                </div>
+                
+                <div class="module-section">
+                    <h4>7. التصيد الاحتيالي والهندسة الاجتماعية</h4>
+                    <ul class="module-points">
+                        <li>التصيد: رسائل مزيفة لسرقة البيانات</li>
+                        <li>الهندسة الاجتماعية: تلاعب نفسي بالضحايا</li>
+                    </ul>
+<section id="safeOrDanger" class="card">
+    <div class="card" style="text-align:right;">
+        <h2 style="text-align:center;">🧠 نشاط: هل هذا آمن أم خطر؟</h2>
+
+        <!-- Progress -->
+        <div style="margin-bottom:10px;">
+            <div style="background:#e0e7ff;border-radius:10px;overflow:hidden;">
+                <div id="progressBar" style="height:10px;width:0%;background:#2f6bff;"></div>
+            </div>
+            <p style="text-align:center;font-size:14px;">
+                السؤال <span id="qNum">1</span> من <span id="qTotal">5</span> |
+                ⭐ النقاط: <span id="score">0</span>
+            </p>
+        </div>
+
+        <p id="scenarioText" style="font-size:16px; line-height:1.8;"></p>
+
+        <div style="text-align:center; margin-top:20px;">
+            <button class="btn" id="safeBtn" onclick="checkAnswer('safe')">✅ آمن</button>
+            <button class="btn" id="dangerBtn"
+                    onclick="checkAnswer('danger')"
+                    style="background:#d9534f;">❌ خطر</button>
+        </div>
+
+        <div id="activityResult"
+             style="margin-top:20px;font-size:16px;"></div>
+
+        <div style="text-align:center; margin-top:20px;">
+            <button class="btn" onclick="nextScenario()">➡ التالي</button>
+        </div>
+    </div>
+</section>
+                </div>
+                
+                <div class="module-section">
+                    <h4>8. طرق انتشار البرمجيات الخبيثة</h4>
+                    <ul class="module-points">
+                        <li>الملفات المصابة</li>
+                        <li>التطبيقات المزيفة</li>
+                        <li>الروابط الخبيثة</li>
+                        <li>الأجهزة الخارجية (USB)</li>
+                        <li>الشبكات الضعيفة</li>
+                        <li>التحديثات المزيفة</li>
+                    </ul>
+                </div>
+                
+                <div class="module-section">
+                    <h4>9. استراتيجيات الوقاية من الهجمات</h4>
+                    <div class="success-badge">
+                        <i class="fa-solid fa-shield-alt"></i>
+                        <strong>نصائح الوقاية:</strong>
+                    </div>
+                    <ul class="module-points" style="margin-top:10px;">
+                        <li>استخدام مضاد فيروسات قوي</li>
+                        <li>التحديث الدائم للنظام</li>
+                        <li>استخدام الجدار الناري</li>
+                        <li>عدم فتح روابط مجهولة</li>
+                        <li>تفعيل المصادقة متعددة العوامل</li>
+                        <li>النسخ الاحتياطي المنتظم</li>
+                        <li>تدريب المستخدمين على الوعي الأمني</li>
+                    </ul>
+                </div>
+                <!-- INFOGRAPHIC SECTION -->
+<div class="infographic">
+    <h3 style="margin-top:25px;">أنواع البرمجيات الخبيثة</h3>
+    <img src="../assets/images/model22.jpg"
+         alt="Infographic"
+         class="infographic-img">
+</div>
+            </div>
+            
+            <!-- ===== HINT SECTION - MODULE 2 ===== -->
+<div class="hint-section" style="text-align:center; margin:30px auto; font-family:Arial;">
+
+    <h3 style="color:#1f3c88;">💡 تلميحة الكترونيه</h3>
+    <p>اضغط على المصباح لرؤية تلميحة مهمة حول الفرق بين الرابط الطبيعي والرابط المخترق</p>
+
+    <!-- اللمبة -->
+    <img 
+        src="https://cdn-icons-png.flaticon.com/512/702/702797.png"
+        id="bulb-module2"
+        style="width:80px; cursor:pointer; transition:0.3s; filter:grayscale(100%); opacity:0.6;"
+        onclick="toggleHintModule2()"
+        alt="لمبة التلميحة"
+    >
+
+    <!-- التلميحة -->
+    <div 
+        id="module2-hint"
+        style="display:none; margin-top:15px; padding:15px; background:#f4f8ff; border-radius:12px; text-align:right;"
+    >
+        <h4>🔗 الفرق بين الرابط الطبيعي والرابط المخترق</h4>
+        <p>إليك كيفية التمييز بين الروابط الآمنة والخطرة للوقاية من هجمات التصيد:</p>
+
+        <p><strong>الرابط الطبيعي (آمن):</strong> يبدأ بـ https:// مع قفل 🔒، اسم الموقع مكتوب بشكل صحيح وواضح، الرابط مباشر ومفهوم، مصدره معروف وموثوق.</p>
+
+        <p><strong>الرابط المخترق (خطر):</strong> يبدأ بـ http:// بدون s أو بدون قفل، يحتوي على أخطاء إملائية في اسم الموقع مثل faceb00k.com، الرابط طويل ومعقد ويحوي رموز وأرقام غريبة، الغرض منه مبهم أو يعد بعروض مغرية، مرسله مجهول أو ينتحل شخصية جهة موثوقة.</p>
+
+        <div style="background:#fff3cd; padding:10px; border-radius:8px; margin-top:10px;">
+            <strong>⚠️ تقنية هاكر شائعة:</strong> استبدال الحروف مثل "o" بالرقم "0" أو "l" بالرقم "1".
+        </div>
+
+        <div style="margin-top:15px;">
+            <h5>🛡️ نصائح أمنية للتعامل مع الروابط:</h5>
+            <ul>
+                <li><strong>تحقق دائمًا:</strong> مرر مؤشر الفأرة فوق الرابط لرؤية العنوان الحقيقي</li>
+                <li><strong>ابحث عن HTTPS:</strong> تأكد من وجود القفل الأخضر و HTTPS</li>
+                <li><strong>لا تثق في العروض المغرية:</strong> غالبًا ما تكون خداع</li>
+                <li><strong>استخدم أدوات التحقق:</strong> برامج مكافحة الفيروسات تفحص الروابط قبل فتحها</li>
+                <li><strong>عند الشك:</strong> اكتب عنوان الموقع يدوياً بدل الضغط على الرابط</li>
+            </ul>
+        </div>
+
+        <div style="background:#e0f7fa; padding:10px; border-radius:8px; margin-top:10px;">
+            <strong>💡 معلومة أمنية:</strong> 91% من هجمات التصيد تبدأ برسالة بريد إلكتروني تحتوي على رابط خبيث!
+        </div>
+    </div>
+
+</div>
+
+
+<!-- أيقونة السؤال المتألقة -->
+<div style="text-align: center; margin: 25px auto;">
+    <div style="position: relative; display: inline-block;">
+        <!-- الصورة الرئيسية -->
+        <img src="../assets/images/que1.jpg" 
+             class="question-icon"
+             alt="سؤال مهم"
+             style="width: 90px; height: 90px; object-fit: cover; border-radius: 50%; cursor: pointer; box-shadow: 0 0 15px rgba(255,215,0,0.5), 0 4px 12px rgba(0,0,0,0.2); transition: all 0.3s ease; animation: glowPulse 1.2s infinite;">
+                
+            
+        </div>
+    </div>
+    <p style="color: #4a6fa5; margin-top: 10px; font-size: 0.85rem;">✨ اضغط على الصورة لرؤية السؤال ✨</p>
+</div>
+
+<!-- نافذة عرض السؤال -->
+<div class="question-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(4px); z-index: 9999; justify-content: center; align-items: center; cursor: pointer;" onclick="closeQuestionModal()">
+    <div style="background: white; border-radius: 28px; max-width: 450px; width: 85%; padding: 35px 30px; text-align: center; box-shadow: 0 25px 50px rgba(0,0,0,0.3); cursor: default; animation: fadeInScale 0.3s ease;" onclick="event.stopPropagation()">
+        <div style="background: linear-gradient(135deg, #ffd89b, #f3b33d); width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: -50px auto 15px auto; box-shadow: 0 8px 20px rgba(243,179,61,0.4);">
+            <span style="font-size: 2rem;">❓</span>
+        </div>
+        <h3 style="color: #b8860b; margin-bottom: 20px; font-size: 1.4rem;">سؤال مهم</h3>
+        <p style="color: #2d3748; font-size: 1.1rem; line-height: 1.6; margin-bottom: 25px;">
+            <strong>ما هي البرمجيات الخبيثة، وما أنواعها وطرق انتشارها وتأثيرها على الأنظمة؟</strong>
+        </p>
+        <button onclick="closeQuestionModal()" style="background: linear-gradient(135deg, #f3b33d, #e6a017); border: none; padding: 10px 30px; border-radius: 40px; color: white; font-weight: bold; cursor: pointer; font-size: 1rem; transition: all 0.2s; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+            فهمت ✅
+        </button>
+    </div>
+</div>
+
+
+<!-- أيقونة الصوت للإجابة (تشغيل/إيقاف) -->
+<div style="text-align: center; margin: 20px auto;">
+    <div class="audio-icon" onclick="toggleAudio(this)" style="position: relative; display: inline-block; cursor: pointer;">
+        <div style="width: 70px; height: 70px; background: linear-gradient(145deg, #667eea, #764ba2); border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 6px 14px rgba(102,126,234,0.4); transition: all 0.3s ease; animation: softPulse 1.5s infinite;">
+            <div class="audio-icon-emoji" style="font-size: 2rem; color: white;">🎧</div>
+        </div>
+        <div style="position: absolute; bottom: -5px; right: -5px; background: #48bb78; width: 20px; height: 20px; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.2);"></div>
+    </div>
+    <p class="audio-status" style="color: #667eea; margin-top: 12px; font-size: 0.8rem; font-weight: 500;">🔊 اضغط للاستماع للإجابة</p>
+</div>
+
+<!-- عنصر الصوت المخفي -->
+<audio class="answer-audio" src="../otherAssets/الموديول الثاني/الموديول الثاني أيقونة الصوت للإجابة (تشغيلإيقاف).mpeg" preload="auto"></audio>
+
+
+
+
+
+
+
+
+<!-- ===== MODULE PODCAST 2 ===== -->
+<div class="module-podcast">
+
+    <h3>🎧 بودكاست: التهديدات السيبرانية والبرمجيات الخبيثة</h3>
+    <p>
+        حلقة بودكاست تشرح أهم التهديدات السيبرانية وأنواع البرمجيات الخبيثة وكيفية التعامل معها.
+    </p>
+
+    <a 
+        href="https://music.amazon.in/podcasts/3a2e6277-79be-4bfc-a445-45c5486f765b/%D8%AD%D9%83%D8%A7%D9%8A%D8%A9-%D8%B3%D9%8A%D8%A8%D8%B1%D8%A7%D9%86%D9%8A%D8%A9"
+        target="_blank"
+        class="podcast-link"
+    >
+        ▶️ الاستماع إلى البودكاست
+    </a>
+
+</div>
+            <!-- VIDEO FOR MODULE 2 -->
+<h3 style="margin-top:25px; text-align:center;">🎥 فيديو شرح الموديول الثاني</h3>
+
+<video controls width="100%" style="
+    border-radius:12px;
+    margin-top:15px;
+    box-shadow:4px 4px 12px #cbd6f0;
+">
+    <source src="../assets/videos/الموديول الثاني.mp4" type="video/mp4">
+    المتصفح الخاص بك لا يدعم تشغيل الفيديو.
+</video>
+            
+            <div style="text-align:center;margin-top:20px;">
+                <button class="btn" onclick="showExamForModule(2)">
+                    <i class="fa-solid fa-graduation-cap"></i> ابدأ اختبار الموديول
+                </button>
+                <button class="btn btn-secondary" onclick="showSection('modules')" style="margin-right:10px;">
+                    <i class="fa-solid fa-arrow-right"></i> عرض جميع الموديولات
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- MODULE 3 CONTENT -->
+<section id="module3" class="section">
+    <div class="card">
+        <div class="content-text">
+            <h2 style="text-align:center; color:#6ca8ff;">🔐 الموديول الثالث: حماية الحسابات والبيانات الشخصية</h2>
+            
+            <div class="module-content">
+                <!-- INFOGRAPHIC SECTION -->
+<div class="infographic">
+    <h3 style="margin-top:25px;"> 📊 انفوجرافيك اهداف الموديول الثالث</h3>
+    <img src="../otherAssets/المديول الثالث/!-- INFOGRAPHIC SECTION --infographicالمديول الثالث.jpg"
+         alt="Infographic"
+         class="infographic-img">
+</div>
+<!-- ملخص الموديول الثالث -->
+<div style="text-align: center; margin: 20px auto">
+  <h3 style="color: #1f3c88">📊 ملخص الموديول الثالث</h3>
+  <p>اضغط على المصباح لرؤية الفيديو</p>
+  <img
+    src="https://cdn-icons-png.flaticon.com/512/702/702797.png"
+    id="bulb-module3-summary"
+    style="width: 80px; cursor: pointer"
+    onclick="showModule3SummaryVideo()"
+    alt="لمبة ملخص الموديول الثالث"
+  />
+</div>
+
+                <div class="module-section">
+                    <h4>🎯 الأهداف التعليمية:</h4>
+                    <ul class="module-points">
+                        <li>إنشاء كلمات مرور قوية وآمنة</li>
+                        <li>استخدام أدوات إدارة كلمات المرور</li>
+                        <li>تفعيل المصادقة الثنائية (2FA)</li>
+                        <li>التعرف على علامات اختراق الحسابات</li>
+                        <li>ضبط إعدادات الخصوصية في المنصات</li>
+                    </ul>
+                </div>
+                
+                <div class="module-section">
+                    <h4>🔑 كلمات المرور القوية:</h4>
+                    <div class="comparison-table">
+                        <div class="comparison-header">مقارنة بين كلمات المرور القوية والضعيفة</div>
+                        <div class="comparison-row">
+                            <div class="comparison-cell" style="background:var(--bg-dark); color:white;"><strong>النوع</strong></div>
+                            <div class="comparison-cell"><strong>كلمة مرور قوية</strong></div>
+                            <div class="comparison-cell"><strong>كلمة مرور ضعيفة</strong></div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="comparison-cell"><strong>الطول</strong></div>
+                            <div class="comparison-cell">12+ حرف</div>
+                            <div class="comparison-cell">أقل من 8 أحرف</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="comparison-cell"><strong>المحتوى</strong></div>
+                            <div class="comparison-cell">حروف، أرقام، رموز</div>
+                            <div class="comparison-cell">كلمة واحدة فقط</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="comparison-cell"><strong>الفترة</strong></div>
+                            <div class="comparison-cell">تغيير كل 3-6 أشهر</div>
+                            <div class="comparison-cell">نفس الكلمة لسنوات</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="module-section">
+                    <h4>📱 أدوات إدارة كلمات المرور:</h4>
+                    <ul class="module-points">
+                        <li><strong>LastPass:</strong> يوفر تخزيناً مشفراً لكلمات المرور</li>
+                        <li><strong>1Password:</strong> يدعم المصادقة الثنائية</li>
+                        <li><strong>Bitwarden:</strong> مفتوح المصدر ومجاني</li>
+                        <li><strong>Dashlane:</strong> يوفر مراقبة للاختراقات</li>
+                    </ul>
+                </div>
+                
+                <div class="module-section">
+                    <h4>✅ المصادقة الثنائية (2FA):</h4>
+                    <div class="tip-badge">
+                        <i class="fa-solid fa-mobile-alt"></i>
+                        <strong>نصيحة:</strong> فعّل 2FA على جميع حساباتك المهمة مثل البريد الإلكتروني والحسابات البنكية
+                    </div>
+                </div>
+                
+                <div class="module-section">
+                    <h4>🚨 علامات اختراق الحسابات:</h4>
+                    <div class="warning-badge">
+                        <i class="fa-solid fa-exclamation-circle"></i>
+                        <strong>انتبه إذا:</strong>
+                    </div>
+                    <ul class="module-points" style="margin-top:10px;">
+                        <li>تلقي رسائل لم ترسلها</li>
+                        <li>تغيير كلمة المرور دون علمك</li>
+                        <li>ظهور نشاط غير معتاد</li>
+                        <li>تسجيل دخول من أماكن غريبة</li>
+                        <li>تغيير إعدادات الحساب</li>
+                    </ul>
+                </div>
+                
+                <div class="module-section">
+                    <h4>⚙️ إعدادات الخصوصية:</h4>
+                    <ul class="module-points">
+                        <li>مراجعة إعدادات الخصوصية شهرياً</li>
+                        <li>تقييد من يمكنه رؤية معلوماتك</li>
+                        <li>تعطيل تحديد الموقع تلقائياً</li>
+                        <li>مراجعة صلاحيات التطبيقات</li>
+                        <li>حذف الحسابات غير المستخدمة</li>
+                    </ul>
+                </div>
+                
+                <div class="module-section">
+                    <h4>📊 إحصائيات مهمة:</h4>
+                    <div class="stats-grid" style="margin:15px 0;">
+                        <div class="stat-card" style="background:linear-gradient(135deg, #ff6b6b, #ff8e8e);">
+                            <div class="stat-number">81%</div>
+                            <div class="stat-label">من الاختراقات بسبب كلمات مرور ضعيفة</div>
+                        </div>
+                        <div class="stat-card" style="background:linear-gradient(135deg, #4ecdc4, #44a08d);">
+                            <div class="stat-number">99.9%</div>
+                            <div class="stat-label">نسبة الحماية مع 2FA</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ===== HINT SECTION - MODULE 3 ===== -->
+<div class="hint-section" style="text-align:center; margin:30px auto; font-family:Arial;">
+
+    <h3 style="color:#1f3c88;">💡 تلميحة الكترونيه</h3>
+    <p>اضغط على المصباح لرؤية تلميحة متقدمة حول حماية الحسابات والبيانات الشخصية</p>
+
+    <!-- اللمبة الرئيسية -->
+    <img 
+        src="https://cdn-icons-png.flaticon.com/512/702/702797.png"
+        id="bulb-module3"
+        style="width:80px; cursor:pointer; transition:0.3s; filter:grayscale(100%); opacity:0.6;"
+        onclick="toggleHintModule3()"
+        alt="لمبة تلميحة الموديول الثالث"
+    >
+
+    <!-- التلميحة -->
+    <div 
+        id="module3-hint"
+        style="display:none; margin-top:15px; padding:15px; background:#f4f8ff; border-radius:12px; text-align:right;"
+    >
+        <h4>🔒 تلميحة الموديول الثالث: حماية الحسابات والبيانات الشخصية</h4>
+        <p>حماية الحسابات الرقمية ليست مجرد كلمات مرور، بل نظام كامل من الإجراءات لضمان أمانك:</p>
+
+        <ul>
+            <li><strong>كلمات مرور قوية وفريدة:</strong> استخدمي 12–16 حرفًا على الأقل مع مزيج من الحروف الكبيرة والصغيرة والأرقام والرموز.</li>
+            <li><strong>أدوات إدارة كلمات المرور:</strong> مثل Bitwarden أو LastPass لتخزين كلمات المرور وتوليد كلمات قوية تلقائيًا.</li>
+            <li><strong>المصادقة الثنائية (2FA):</strong> طبقة حماية إضافية باستخدام تطبيقات مثل Google Authenticator أو مفاتيح الأمان المادية YubiKey.</li>
+            <li><strong>مراقبة النشاط:</strong> متابعة جلسات تسجيل الدخول والتنبيهات الأمنية لملاحظة أي نشاط غير معتاد.</li>
+            <li><strong>إعدادات الخصوصية:</strong> ضبط من يمكنه رؤية بياناتك أو التواصل معك على المنصات الرقمية.</li>
+            <li><strong>أفضل الممارسات:</strong> تحديث التطبيقات والنظام باستمرار، استخدام VPN عند الاتصال بالشبكات العامة، وعدم مشاركة كلمات المرور أو المعلومات الحساسة.</li>
+        </ul>
+
+    </div>
+
+</div>
+
+
+<div id="videoModal3" style="
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.9);
+    justify-content:center;
+    align-items:center;
+    z-index:2000;
+">
+    <video id="module3SummaryVideo" controls style="width:80%; max-width:700px; border-radius:12px;">
+        <source src="../otherAssets/المديول الثالث/ملخص المديول الثالث اللمبة التفاعلية.mp4" type="video/mp4">
+        المتصفح لا يدعم الفيديو
+    </video>
+</div>
+
+<!-- أيقونة السؤال المتألقة - MODULE 3 -->
+<div style="text-align: center; margin: 25px auto;">
+    <div style="position: relative; display: inline-block;">
+        <img src="../assets/images/que1.jpg"
+             class="question-icon"
+             alt="سؤال مهم"
+             style="width: 90px; height: 90px; object-fit: cover; border-radius: 50%; cursor: pointer; box-shadow: 0 0 15px rgba(255,215,0,0.5), 0 4px 12px rgba(0,0,0,0.2); transition: all 0.3s ease; animation: glowPulse 1.2s infinite;">
+    </div>
+    <p style="color: #4a6fa5; margin-top: 10px; font-size: 0.85rem;">✨ اضغط على الصورة لرؤية النشاط ✨</p>
+</div>
+
+<div class="question-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(4px); z-index: 9999; justify-content: center; align-items: center; cursor: pointer;" onclick="closeQuestionModal()">
+    <div style="background: white; border-radius: 28px; max-width: 520px; width: 90%; padding: 35px 30px; text-align: center; box-shadow: 0 25px 50px rgba(0,0,0,0.3); cursor: default; animation: fadeInScale 0.3s ease;" onclick="event.stopPropagation()">
+        <img src="../otherAssets/المديول الثالث/أيقونة السؤال المتألقة الموديول الثالث.jpg" alt="أيقونة السؤال المتألقة الموديول الثالث" style="max-width:100%; border-radius:12px; margin-bottom:15px;">
+        <a href="https://wordwall.net/resource/110474997" target="_blank" class="btn">فتح النشاط</a>
+    </div>
+</div>
+
+<!-- INFOGRAPHIC SECTION -->
+<div class="infographic">
+    <h3 style="margin-top:25px;"> 📊 انفوجرافيك الامن السيبراني وحماية البيانات  </h3>
+    <img src="../assets/images/التالت 2.jpg"
+         alt="Infographic"
+         class="infographic-img">
+</div>
+<!-- ===== MODULE PODCAST 3 ===== -->
+<div class="module-podcast">
+
+    <h3>🎧 بودكاست: حماية الحسابات والبيانات الشخصية</h3>
+    <p>
+        حلقة بودكاست توعوية عن حماية حساباتك وبياناتك الشخصية على الإنترنت
+        وكيف تحافظي عليها من السرقة والاختراق.
+    </p>
+
+    <a 
+        href="https://podcasts.apple.com/ye/podcast/%D8%A8%D9%88%D8%AF%D9%83%D8%A7%D8%B3%D8%AA-%D8%AD%D9%85%D8%A7%D9%8A%D8%A9/id1538088486"
+        target="_blank"
+        class="podcast-link"
+    >
+        ▶️ الاستماع إلى البودكاست
+    </a>
+
+</div>
+            <!-- VIDEO FOR MODULE 3 -->
+<h3 style="margin-top:25px; text-align:center;">🎥 فيديو شرح الموديول الثالث<h3>
+
+<video controls width="100%" style="
+    border-radius:12px;
+    margin-top:15px;
+    box-shadow:4px 4px 12px #cbd6f0;
+">
+    <source src="../assets/videos/الموديول الثالث.mp4" type="video/mp4">
+    المتصفح الخاص بك لا يدعم تشغيل الفيديو.
+</video>
+            
+            <div style="text-align:center;margin-top:20px;">
+                <button class="btn" onclick="showExamForModule(3)">
+                    <i class="fa-solid fa-graduation-cap"></i> ابدأ اختبار الموديول
+                </button>
+                <button class="btn btn-secondary" onclick="showSection('modules')" style="margin-right:10px;">
+                    <i class="fa-solid fa-arrow-right"></i> عرض جميع الموديولات
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MODULE 4 CONTENT -->
+<section id="module4" class="section">
+    <div class="card">
+        <div class="content-text">
+            <h2 style="text-align:center; color:#6ca8ff;">🌐 الموديول الرابع: أمن الشبكات والاتصال بالإنترنت</h2>
+            
+            <div class="module-content">
+                <!-- INFOGRAPHIC SECTION -->
+<div class="infographic">
+    <h3 style="margin-top:25px;"> 📊 انفوجرافيك اهداف الموديول الرابع</h3>
+    <img src="../otherAssets/المديول الرابع/اهداف المديول الرابع.jpg"
+         alt="Infographic"
+         class="infographic-img">
+</div>
+
+<!-- اللمبة التفاعلية -->
+<div style="text-align: center; margin: 20px auto;">
+    <h3 style="color:#1f3c88;">📊 انفوجرافيك تلخيص المديول</h3>
+    <p> اضغط على المصباح لرؤية الإنفوجرافيك الخاص بتلخيص المديول</p>
+    
+    <img src="https://cdn-icons-png.flaticon.com/512/702/702797.png" 
+         id="bulb-module4-infographic"
+         style="width:80px; cursor:pointer; transition:0.3s; filter:grayscale(100%); opacity:0.6;"
+         onclick="showInfographic('module4')"
+         alt="الإنفوجرافيك">
+</div>
+
+<!-- نافذة عرض الإنفوجرافيك -->
+<div id="infographicModal-module4" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); z-index: 9999; justify-content: center; align-items: center; cursor: pointer;" onclick="closeModal()">
+    <div style="position: relative; max-width: 90%; max-height: 90%;">
+        <img id="infographicImg" src="../otherAssets/المديول الرابع/انفوجرافيك تلخيص المديول.jpg" alt="الإنفوجرافيك" style="max-width: 100%; max-height: 90vh; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); border: 2px solid white;">
+        <div style="position: absolute; bottom: -35px; left: 50%; transform: translateX(-50%); color: white; background: rgba(0,0,0,0.6); padding: 6px 14px; border-radius: 30px; font-size: 12px; white-space: nowrap;">
+            ✖ اضغط في أي مكان للإغلاق
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+                <div class="module-section">
+                    <h4>1. أنواع الشبكات (LAN – WAN – WLAN)</h4>
+                    <div class="enhanced-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>النوع</th>
+                                    <th>المساحة</th>
+                                    <th>الاستخدام</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>LAN</td>
+                                    <td>محلية (منزل، مكتب)</td>
+                                    <td>شبكات داخلية</td>
+                                </tr>
+                                <tr>
+                      <td>WAN</td>
+                                    <td>واسعة (مدن، دول)</td>
+                                    <td>الإنترنت</td>
+                                </tr>
+                                <tr>
+                                    <td>WLAN</td>
+                                    <td>محلية لاسلكية</td>
+                                    <td>Wi-Fi</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="module-section">
+                    <h4>2. مكونات الشبكات (Switch – Router – Hub)</h4>
+                    <ul class="module-points">
+                        <li><strong>Hub:</strong> يوزع البيانات للجميع (غير آمن)</li>
+                        <li><strong>Switch:</strong> يوزع البيانات بشكل ذكي</li>
+                        <li><strong>Router:</strong> يربط الشبكة بالإنترنت ويوفر الحماية</li>
+                    </ul>
+                </div>
+                
+                <div class="module-section">
+                    <h4>3. مفهوم البروتوكولات ودورها في الاتصال</h4>
+                    <ul class="module-points">
+                        <li>TCP/IP: أساس الإنترنت</li>
+                        <li>HTTP/HTTPS: تصفح المواقع (HTTPS مشفر)</li>
+                        <li>DNS: تحويل أسماء المواقع إلى عناوين IP</li>
+                        <li>FTP/SFTP: نقل الملفات</li>
+                    </ul>
+                </div>
+                
+                <div class="module-section">
+                    <h4>4. الشبكات اللاسلكية وخطورة الشبكات المفتوحة</h4>
+                    <div class="warning-badge">
+                        <i class="fa-solid fa-wifi"></i>
+                        <strong>تحذير:</strong> الشبكات العامة غير آمنة - لا تستخدمها للتعاملات الحساسة
+                    </div>
+                </div>
+                
+                <div class="module-section">
+                    <h4>5. التهديدات المتعلقة بالشبكات</h4>
+                    <div class="comparison-table">
+                        <div class="comparison-header">أنواع هجمات الشبكات</div>
+                        <div class="comparison-row">
+                            <div class="comparison-cell"><strong>MITM</strong></div>
+                            <div class="comparison-cell">اعتراض الاتصال بين جهازين وقراءة البيانات</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="comparison-cell"><strong>DDoS</strong></div>
+                            <div class="comparison-cell">إغراق الخادم بطلبات كثيرة</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="comparison-cell"><strong>Sniffing</strong></div>
+                            <div class="comparison-cell">التجسس على البيانات المرسلة</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="module-section">
+                    <h4>6. أساسيات تأمين الشبكات المنزلية</h4>
+                    <div class="success-badge">
+                        <i class="fa-solid fa-home"></i>
+                        <strong>نصائح لتأمين الشبكة المنزلية:</strong>
+                    </div>
+                    <ul class="module-points" style="margin-top:10px;">
+                        <li>تغيير اسم الشبكة الافتراضي</li>
+                        <li>استخدام كلمة مرور قوية لـ Wi-Fi</li>
+                        <li>إيقاف WPS</li>
+                        <li>تحديث الراوتر بانتظام</li>
+                        <li>تغيير كلمة مرور لوحة التحكم</li>
+                        <li>استخدام الجدار الناري المدمج</li>
+                        <li>مراقبة الأجهزة المتصلة</li>
+                    </ul>
+                </div>
+                
+                <div class="module-section">
+                    <h4>7. الجدار الناري (Firewall) ووظيفته</h4>
+                    <p>نظام أمني يفحص البيانات ويمنع الاتصالات المشبوهة ويسمح بالاتصالات الموثوقة.</p>
+                </div>
+                
+                <div class="module-section">
+                    <h4>8. نصائح استخدام الإنترنت بأمان</h4>
+                    <ul class="module-points">
+                        <li>استخدم مواقع HTTPS فقط</li>
+                        <li>لا تضغط على الروابط المجهولة</li>
+                        <li>تجنب مشاركة المعلومات الشخصية</li>
+                        <li>فعّل التحديثات دائماً</li>
+                        <li>استخدم VPN على الشبكات العامة</li>
+                        <li>راقب صلاحيات التطبيقات</li>
+                        <li>احتفظ بنسخة احتياطية للبيانات</li>
+                    </ul>
+                </div>
+<div class="card" style="margin-top:25px;">
+    <h3>🛡 الفحص الذكي للروابط (AI-Link)</h3>
+    <p>أدخل أي رابط وسيقوم النظام بتحليل مدى خطورته:</p>
+
+    <input type="text" id="aiUrlInput" placeholder="مثال: https://google.com"
+           style="width:100%; padding:10px; border-radius:10px; border:1px solid #cad6f0;">
+
+    <button class="btn" onclick="aiSmartCheck()" style="margin-top:10px;">فحص الرابط</button>
+
+    <div id="aiUrlReport" style="margin-top:15px; line-height:1.9;"></div>
+</div>
+<!-- INFOGRAPHIC SECTION -->
+<div class="infographic">
+    <h3 style="margin-top:25px;"> 📊 اساسيات مهمة للامن السيبراني   </h3>
+    <img src="../otherAssets/المديول الرابع/اساسيات مهمة للامن السيبراني.jpg"
+         alt="Infographic"
+         class="infographic-img">
+</div>
+            </div>
+            
+            <!-- ===== HINT SECTION - MODULE 4 ===== -->
+<div class="hint-section" style="text-align:center; margin:30px auto; font-family:Arial;">
+
+    <h3 style="color:#1f3c88;">💡 تلميحة الكترونيه</h3>
+    <p>اضغط على المصباح لرؤية تلميحة موسّعة ومفيدة حول أمن الشبكات والاتصال بالإنترنت</p>
+
+    <!-- اللمبة -->
+    <img 
+        src="https://cdn-icons-png.flaticon.com/512/702/702797.png"
+        id="bulb-module4"
+        style="width:80px; cursor:pointer; transition:0.3s; filter:grayscale(100%); opacity:0.6;"
+        onclick="toggleHintModule4()"
+        alt="لمبة التلميحة"
+    >
+
+    <!-- التلميحة الموسّعة -->
+    <div 
+        id="module4-hint"
+        style="display:none; margin-top:15px; padding:15px; background:#f4f8ff; border-radius:12px; text-align:right;"
+    >
+        <h4>🛡️ تلميحة الموديول الرابع: حماية وأمان الشبكات</h4>
+        
+        <p>الموديول الرابع يغطي كل ما يخص الشبكات المنزلية وأنواعها وأساسيات حماية الاتصال بالإنترنت:</p>
+
+        <ul>
+            <li><strong>أنواع الشبكات:</strong> 
+                LAN للشبكات المحلية الصغيرة، WAN للشبكات الواسعة، WLAN للشبكات اللاسلكية.</li>
+            <li><strong>مكونات الشبكات:</strong> 
+                <em>Hub</em> بسيط وغير آمن، <em>Switch</em> ذكي وفعال، <em>Router</em> أساسي للاتصال بالإنترنت وحماية الشبكة.</li>
+            <li><strong>البروتوكولات:</strong> TCP/IP لنقل البيانات، HTTPS لتصفح آمن، DNS لتحويل أسماء المواقع، FTP/SFTP لنقل الملفات.</li>
+            <li><strong>الشبكات اللاسلكية المفتوحة:</strong> خطرة جدًا على بياناتك، استخدمي VPN وحسبي الحسابات الحساسة بعيدًا عن هذه الشبكات.</li>
+            <li><strong>التهديدات:</strong> MITM لاعتراض البيانات، DoS لتعطيل الخدمات، Sniffing للتجسس على حركة البيانات.</li>
+            <li><strong>تأمين الشبكة المنزلية:</strong> 
+                تغيير اسم الشبكة وكلمة المرور، استخدام WPA3، إيقاف WPS، تحديث الراوتر، مراقبة الأجهزة المتصلة، استخدام جدار ناري.</li>
+            <li><strong>نصيحة احترافية:</strong>> 🛡️ ضع كلمة مرور قوية لشبكتك، وفصل الشبكات إذا أمكن، وحدث الراوتر والأجهزة بانتظام لتحمي نفسك من المخترقين..</li>
+        </ul>
+
+        <div style="margin-top:15px; text-align:center;">
+            <img src="https://cdn-icons-png.flaticon.com/512/4149/4149696.png" 
+                 style="width:150px; border-radius:12px;" 
+                 alt="أمن سيبراني ملون">
+        </div>
+
+        <div style="margin-top:15px; padding:10px; background:#fff3cd; border-radius:8px; border:1px solid #ffeeba; text-align:right;">
+            <strong>💡 معلومة مهمة:</strong> حتى الشبكات المنزلية الصغيرة معرضة للهجمات، تحديث الراوتر كل فترة قصيرة يقلل من الثغرات الأمنية بنسبة كبيرة.
+        </div>
+    </div>
+</div>
+
+
+<!-- أيقونة السؤال المتألقة -->
+<div style="text-align: center; margin: 25px auto;">
+    <div style="position: relative; display: inline-block;">
+        <!-- الصورة الرئيسية -->
+        <img src="../assets/images/que1.jpg" 
+             class="question-icon"
+             alt="سؤال مهم"
+             style="width: 90px; height: 90px; object-fit: cover; border-radius: 50%; cursor: pointer; box-shadow: 0 0 15px rgba(255,215,0,0.5), 0 4px 12px rgba(0,0,0,0.2); transition: all 0.3s ease; animation: glowPulse 1.2s infinite;">
+        
+        
+        </div>
+    </div>
+    <p style="color: #4a6fa5; margin-top: 10px; font-size: 0.85rem;">✨ اضغط على الصورة لرؤية السؤال ✨</p>
+</div>
+
+<!-- نافذة عرض السؤال -->
+<div class="question-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(4px); z-index: 9999; justify-content: center; align-items: center; cursor: pointer;" onclick="closeQuestionModal()">
+    <div style="background: white; border-radius: 28px; max-width: 450px; width: 85%; padding: 35px 30px; text-align: center; box-shadow: 0 25px 50px rgba(0,0,0,0.3); cursor: default; animation: fadeInScale 0.3s ease;" onclick="event.stopPropagation()">
+        <div style="background: linear-gradient(135deg, #ffd89b, #f3b33d); width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: -50px auto 15px auto; box-shadow: 0 8px 20px rgba(243,179,61,0.4);">
+            <span style="font-size: 2rem;">❓</span>
+        </div>
+        <h3 style="color: #b8860b; margin-bottom: 20px; font-size: 1.4rem;">سؤال مهم</h3>
+        <p style="color: #2d3748; font-size: 1.1rem; line-height: 1.6; margin-bottom: 25px;">
+            <strong>ما الفرق بين Hub و Switch و Router؟</strong>
+        </p>
+        <button onclick="closeQuestionModal()" style="background: linear-gradient(135deg, #f3b33d, #e6a017); border: none; padding: 10px 30px; border-radius: 40px; color: white; font-weight: bold; cursor: pointer; font-size: 1rem; transition: all 0.2s; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+            فهمت ✅
+        </button>
+    </div>
+</div>
+
+
+<!-- أيقونة الصوت للإجابة (تشغيل/إيقاف) -->
+<div style="text-align: center; margin: 20px auto;">
+    <div class="audio-icon" onclick="toggleAudio(this)" style="position: relative; display: inline-block; cursor: pointer;">
+        <div style="width: 70px; height: 70px; background: linear-gradient(145deg, #667eea, #764ba2); border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 6px 14px rgba(102,126,234,0.4); transition: all 0.3s ease; animation: softPulse 1.5s infinite;">
+            <div class="audio-icon-emoji" style="font-size: 2rem; color: white;">🎧</div>
+        </div>
+        <div style="position: absolute; bottom: -5px; right: -5px; background: #48bb78; width: 20px; height: 20px; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.2);"></div>
+    </div>
+    <p class="audio-status" style="color: #667eea; margin-top: 12px; font-size: 0.8rem; font-weight: 500;">🔊 اضغط للاستماع للإجابة</p>
+</div>
+
+<!-- عنصر الصوت المخفي -->
+<audio class="answer-audio" src="../otherAssets/المديول الرابع/ريكورد اجابه السؤال الموديول الرابع.mp3" preload="auto"></audio>
+
+
+
+
+
+
+
+
+<!-- ===== MODULE PODCAST NETWORK SECURITY ===== -->
+<div class="module-podcast">
+
+    <h3>🎧 بودكاست: أمن الشبكات والاتصال بالإنترنت</h3>
+    <p>
+        حلقة بودكاست تهتم بأمن الشبكات وكيفية تأمين اتصالك بالإنترنت
+        لحماية نفسك وبياناتك من المخاطر الرقمية.
+    </p>
+
+    <a 
+        href="https://enabpodcast.podbean.com/"
+        target="_blank"
+        class="podcast-link"
+    >
+        ▶️ الاستماع إلى البودكاست
+    </a>
+
+</div>
+            <!-- VIDEO FOR MODULE 4 -->
+<h3 style="margin-top:25px; text-align:center;">🎥 فيديو شرح الموديول الرابع</h3>
+
+<video controls width="100%" style="
+    border-radius:12px;
+    margin-top:15px;
+    box-shadow:4px 4px 12px #cbd6f0;
+">
+    <source src="../assets/videos/الموديول الرابع.mp4" type="video/mp4">
+    المتصفح الخاص بك لا يدعم تشغيل الفيديو.
+</video>
+            
+            <div style="text-align:center;margin-top:20px;">
+                <button class="btn" onclick="showExamForModule(4)">
+                    <i class="fa-solid fa-graduation-cap"></i> ابدأ اختبار الموديول
+                </button>
+                <button class="btn btn-secondary" onclick="showSection('modules')" style="margin-right:10px;">
+                    <i class="fa-solid fa-arrow-right"></i> عرض جميع الموديولات
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MODULE 5 CONTENT -->
+<section id="module5" class="section">
+    <div class="card">
+        <div class="content-text">
+            <h2 style="text-align:center; color:#6ca8ff;">📧 الموديول الخامس: أمن البريد الإلكتروني والتطبيقات</h2>
+            
+            <div class="module-content">
+                <!-- INFOGRAPHIC SECTION -->
+<div class="infographic">
+    <h3 style="margin-top:25px;"> 📊 انفوجرافيك اهداف الموديول الخامس</h3>
+    <img src="../otherAssets/المديول الخامس/WhatsApp Image 2026-04-20 at 12.01.54 AM.jpeg"
+         alt="Infographic"
+         class="infographic-img">
+</div>
+<!-- لمبة ملخص الموديول الخامس -->
+<div style="text-align:center;">
+    <h3>📊 ملخص الموديول الخامس</h3>
+    <p>اضغط على المصباح لرؤية الفيديو</p>
+
+    <img src="https://cdn-icons-png.flaticon.com/512/702/702797.png"
+         id="bulb-module5-summary"
+         style="width:80px;cursor:pointer;"
+         onclick="showModule5Video()">
+</div>
+
+<!-- مودال فيديو الموديول الخامس -->
+<div id="videoModal5" style="
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.9);
+    justify-content:center;
+    align-items:center;
+    z-index:2000;
+">
+    <video id="module5Video" controls style="width:80%; max-width:700px; border-radius:12px;">
+        <source src="../otherAssets/المديول الخامس/WhatsApp Video 2026-04-20 at 12.01.54 AM.mp4" type="video/mp4">
+        المتصفح لا يدعم الفيديو
+    </video>
+</div>
+                <div class="module-section">
+                    <h4>🎯 الأهداف التعليمية:</h4>
+                    <ul class="module-points">
+                        <li>التعرف على مخاطر البريد الإلكتروني غير الآمن</li>
+                        <li>اكتشاف الرسائل الاحتيالية</li>
+                        <li>حماية التطبيقات من التهديدات</li>
+                        <li>إدارة صلاحيات التطبيقات</li>
+                        <li>الاستخدام الآمن للمتاجر الرقمية</li>
+                    </ul>
+                </div>
+                
+                <div class="module-section">
+                    <h4>📨 مخاطر البريد الإلكتروني:</h4>
+                    <div class="warning-badge">
+                        <i class="fa-solid fa-envelope"></i>
+                        <strong>90% من الهجمات تبدأ ببريد إلكتروني!</strong>
+                    </div>
+                    <ul class="module-points" style="margin-top:10px;">
+                        <li>التصيد الاحتيالي (Phishing)</li>
+                        <li>البرمجيات الخبيثة في المرفقات</li>
+                        <li>الروابط الخبيثة</li>
+                        <li>انتحال الهوية</li>
+                    </ul>
+                </div>
+                
+                <div class="module-section">
+                    <h4>🔍 كيف تتعرف على الرسائل الاحتيالية؟</h4>
+                    <div class="comparison-table">
+                        <div class="comparison-header">مقارنة بين الرسائل الحقيقية والاحتيالية</div>
+                        <div class="comparison-row">
+                            <div class="comparison-cell"><strong>العنوان</strong></div>
+                            <div class="comparison-cell"><strong>رسالة حقيقية</strong></div>
+                            <div class="comparison-cell"><strong>رسالة احتيالية</strong></div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="comparison-cell"><strong>البريد المرسل</strong></div>
+                            <div class="comparison-cell">اسم نطاق رسمي (company.com)</div>
+                            <div class="comparison-cell">نطاق غريب (company-secure.net)</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="comparison-cell"><strong>اللغة</strong></div>
+                            <div class="comparison-cell">صحيحة ورسمية</div>
+                            <div class="comparison-cell">أخطاء إملائية ونحوية</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="comparison-cell"><strong>الروابط</strong></div>
+                            <div class="comparison-cell">موجهة للموقع الرسمي</div>
+                            <div class="comparison-cell">موجهة لمواقع وهمية</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="module-section">
+                    <h4>📱 مخاطر التطبيقات غير الموثوقة:</h4>
+                    <ul class="module-points">
+                        <li>سرقة البيانات الشخصية</li>
+                        <li>التجسس على المستخدم</li>
+                        <li>إصابة الجهاز ببرمجيات خبيثة</li>
+                        <li>استهلاك موارد الجهاز</li>
+                    </ul>
+                </div>
+                
+                <div class="module-section">
+                    <h4>⚖️ إدارة صلاحيات التطبيقات:</h4>
+                    <div class="tip-badge">
+                  <i class="fa-solid fa-user-check"></i>
+                        <strong>نصيحة:</strong> امنح التطبيقات فقط الصلاحيات الضرورية لأداء وظيفتها
+                    </div>
+                    <ul class="module-points" style="margin-top:10px;">
+                        <li>راجع الصلاحيات قبل التثبيت</li>
+                        <li>استعرض الصلاحيات بانتظام</li>
+                        <li>أزل الصلاحيات غير المستخدمة</li>
+                        <li>احذر التطبيقات التي تطلب صلاحيات مفرطة</li>
+                    </ul>
+                </div>
+                
+                <div class="module-section">
+                    <h4>🛒 الاستخدام الآمن للمتاجر الرقمية:</h4>
+                    <ul class="module-points">
+                        <li>استخدم المتاجر الرسمية فقط (Google Play، App Store)</li>
+                        <li>اقرأ التقييمات والتعليقات</li>
+                        <li>تحقق من المطور الرسمي</li>
+                        <li>تجنب التطبيقات المقرصنة (MOD APK)</li>
+                        <li>ابحث عن عدد مرات التحميل</li>
+                        <li>راجع تاريخ التحديثات</li>
+                    </ul>
+                </div>
+                
+                <div class="module-section">
+                    <h4>🛡️ أفضل الممارسات الأمنية:</h4>
+                    <div class="success-badge">
+                        <i class="fa-solid fa-shield-alt"></i>
+                        <strong>نصائح أمنية:</strong>
+                    </div>
+                    <ul class="module-points" style="margin-top:10px;">
+                        <li>استخدم بريدين إلكترونيين: شخصي وآخر للتسجيلات</li>
+                        <li>فعّل المصادقة الثنائية للبريد</li>
+                        <li>تحديث التطبيقات بانتظام</li>
+                        <li>استخدم مضاد فيروسات للهاتف</li>
+                        <li>انتبه لطلبات الصلاحيات الغريبة</li>
+                        <li>احذف التطبيقات غير المستخدمة</li>
+                    </ul>
+                </div>
+                <!-- INFOGRAPHIC SECTION -->
+<div class="infographic">
+    <h3 style="margin-top:25px;"> 📊 تأمين البريد الإلكتروني والتطبيقات الذكية   </h3>
+    <img src="../assets/images/الخامس 2.jpg"
+         alt="Infographic"
+         class="infographic-img">
+</div>
+            </div>
+            
+            <!-- ===== HINT SECTION - MODULE 5 ===== -->
+<div class="hint-section" style="text-align:center; margin:30px auto; font-family:Arial;">
+
+    <h3 style="color:#1f3c88;">💡 تلميحة الكترونيه</h3>
+    <p>اضغط على المصباح لرؤية تلميحة مهمة حول اكتشاف رسائل التصيد</p>
+
+    <!-- اللمبة -->
+    <img 
+        src="https://cdn-icons-png.flaticon.com/512/702/702797.png"
+        id="bulb-module5"
+        style="width:80px; cursor:pointer; transition:0.3s; filter:grayscale(100%); opacity:0.6;"
+        onclick="toggleHintModule5()"
+        alt="لمبة التلميحة"
+    >
+
+    <!-- التلميحة -->
+    <div 
+        id="module5-hint"
+        style="display:none; margin-top:15px; padding:15px; background:#f4f8ff; border-radius:12px; text-align:right;"
+    >
+        <h4>🎣 تلميحة الموديول الخامس: تقنيات متقدمة لاكتشاف رسائل التصيد</h4>
+        <p>إليك تقنيات المخترقين المتقدمة في التصيد الاحتيالي وكيفية اكتشافها:</p>
+
+        <ul>
+            <li><strong>التصيد المستهدف (Spear Phishing):</strong>
+                رسائل مخصصة بناءً على معلوماتك الشخصية، استخدم الحذر حتى من الرسائل التي تبدو شخصية.</li>
+            <li><strong>التصيد بالتنكر (Whaling):</strong>
+                يستهدف المسؤولين الكبار، تحقق من الهوية عبر قناة اتصال أخرى قبل الرد.</li>
+            <li><strong>التصيد عبر الهاتف (Vishing):</strong>
+                مكالمات تنتحل شخصية بنك أو شركة، لا تعطي معلوماتك عبر الهاتف وتحقق من الرقم الرسمي.</li>
+        </ul>
+
+        <div style="margin-top:15px; text-align:center;">
+            <img src="https://cdn-icons-png.flaticon.com/512/4149/4149696.png" 
+                 style="width:150px; border-radius:12px;" 
+                 alt="أمن سيبراني ملون">
+        </div>
+
+        <div style="margin-top:15px; padding:10px; background:#fff3cd; border-radius:8px; border:1px solid #ffeeba; text-align:right;">
+            <strong>💡 معلومة مهمة:</strong> يستخدم المخترقون تقنية "الاستنساخ" حيث يستنسخون رسائل حقيقية ويرسلونها من عنوان مشابه مع روابط خبيثة!
+        </div>
+
+        <div style="margin-top:15px; padding:10px; background:#d1ecf1; border-radius:8px; border:1px solid #bee5eb; text-align:right;">
+            <strong>🛡️ نصيحة احترافية:</strong> استخدم بريداً إلكترونياً منفصلاً للمواقع غير المهمة، واحتفظ ببريد رئيسي آمن للتواصل والخدمات المهمة.
+        </div>
+    </div>
+</div>
+
+
+          <!-- ===== MODULE PODCAST EMAIL & APPS SECURITY ===== -->
+<div class="module-podcast">
+
+    <h3>🎧 بودكاست: حماية البريد والتطبيقات وحساباتك</h3>
+    <p>
+        حلقة بودكاست توعوية من سلسلة “حماية” تتناول أفضل ممارسات حماية البريد الإلكتروني
+        والتطبيقات وحساباتك الشخصية على الإنترنت من الاختراق والاحتيال.
+    </p>
+
+    <a 
+        href="https://podcasts.apple.com/sa/podcast/%D8%A8%D9%88%D8%AF%D9%83%D8%A7%D8%B3%D8%AA-%D8%AD%D9%85%D8%A7%D9%8A%D8%A9/id1538088486"
+        target="_blank"
+        class="podcast-link"
+    >
+        ▶️ الاستماع إلى البودكاست
+    </a>
+
+</div>
+
+<!-- أيقونة السؤال المتألقة - MODULE 5 -->
+<div style="text-align: center; margin: 25px auto;">
+    <div style="position: relative; display: inline-block;">
+        <img src="../assets/images/que1.jpg"
+             class="question-icon"
+             alt="سؤال مهم"
+             style="width: 90px; height: 90px; object-fit: cover; border-radius: 50%; cursor: pointer; box-shadow: 0 0 15px rgba(255,215,0,0.5), 0 4px 12px rgba(0,0,0,0.2); transition: all 0.3s ease; animation: glowPulse 1.2s infinite;">
+    </div>
+    <p style="color: #4a6fa5; margin-top: 10px; font-size: 0.85rem;">✨ اضغط على الصورة لفتح النشاط ✨</p>
+</div>
+
+<div class="question-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(4px); z-index: 9999; justify-content: center; align-items: center; cursor: pointer;" onclick="closeQuestionModal()">
+    <div style="background: white; border-radius: 28px; max-width: 500px; width: 90%; padding: 35px 30px; text-align: center; box-shadow: 0 25px 50px rgba(0,0,0,0.3); cursor: default; animation: fadeInScale 0.3s ease;" onclick="event.stopPropagation()">
+        <h3 style="color:#1f3c88; margin-bottom:15px;">نشاط الموديول الخامس</h3>
+        <a href="https://wordwall.net/resource/110433838" target="_blank" class="btn">فتح النشاط</a>
+    </div>
+</div>
+
+            <!-- VIDEO FOR MODULE 5 -->
+<h3 style="margin-top:25px; text-align:center;">🎥 فيديو شرح الموديول الخامس</h3>
+
+<video controls width="100%" style="
+    border-radius:12px;
+    margin-top:15px;
+    box-shadow:4px 4px 12px #cbd6f0;
+">
+    <source src="../assets/videos/الموديول الخامس.mp4" type="video/mp4">
+    المتصفح الخاص بك لا يدعم تشغيل الفيديو.
+</video>
+            
+            <div style="text-align:center;margin-top:20px;">
+                <button class="btn" onclick="showExamForModule(5)">
+                    <i class="fa-solid fa-graduation-cap"></i> ابدأ اختبار الموديول
+                </button>
+                <button class="btn btn-secondary" onclick="showSection('modules')" style="margin-right:10px;">
+                    <i class="fa-solid fa-arrow-right"></i> عرض جميع الموديولات
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MODULE 6 CONTENT -->
+<section id="module6" class="section">
+    <div class="card">
+        <div class="content-text">
+            <h2 style="text-align:center; color:#6ca8ff;">🧠 الموديول السادس: الوعي السيبراني والتثقيف الذاتي</h2>
+            
+            <div class="module-content">
+                <!-- INFOGRAPHIC SECTION -->
+<div class="infographic">
+    <h3 style="margin-top:25px;"> 📊 انفوجرافيك اهداف الموديول السادس</h3>
+    <img src="../otherImage3.jpeg"
+         alt="Infographic"
+         class="infographic-img">
+</div>
+
+<!-- ملخص الموديول السادس -->
+<div style="text-align:center; margin:20px auto;">
+    <h3 style="color:#1f3c88;">📊 ملخص الموديول السادس</h3>
+    <p>اضغط على المصباح لعرض الملخص</p>
+    <img src="https://cdn-icons-png.flaticon.com/512/702/702797.png"
+         id="bulb-module6-summary"
+         style="width:80px; cursor:pointer; transition:0.3s; filter:grayscale(100%); opacity:0.7;"
+         onclick="showModule6SummaryVideo()"
+         alt="لمبة ملخص الموديول السادس">
+</div>
+
+<div id="videoModal6" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; z-index:2000;">
+    <video id="module6SummaryVideo" controls style="width:80%; max-width:700px; border-radius:12px;">
+        <source src="../otherAssets/المديول السادس/انفوجرافيك تلخيص السادس.mp4" type="video/mp4">
+        المتصفح لا يدعم الفيديو
+    </video>
+</div>
+                <div class="module-section">
+                    <h4>1. مفهوم الوعي السيبراني ودوره في الحماية</h4>
+                    <p><strong>الوعي السيبراني:</strong> قدرة الفرد على فهم المخاطر الرقمية واتخاذ قرارات آمنة.</p>
+                    <p><strong>دوره:</strong> خط الدفاع الأول ضد الهجمات الإلكترونية.</p>
+                </div>
+                
+                <div class="module-section">
+                    <h4>2. أهمية الثقافة الرقمية في الحياة اليومية</h4>
+                    <div class="importance-grid" style="margin-top:20px;">
+                        <div class="importance-card">
+                            <i class="fa-solid fa-id-card"></i>
+                            <h4>حماية الهوية الرقمية</h4>
+                        </div>
+                        
+                        <div class="importance-card">
+                            <i class="fa-solid fa-shield-alt"></i>
+                            <h4>تجنب الاحتيال الإلكتروني</h4>
+                        </div>
+                        
+                        <div class="importance-card">
+                            <i class="fa-solid fa-child"></i>
+                            <h4>حماية الأطفال والشباب</h4>
+                        </div>
+                        
+                        <div class="importance-card">
+                            <i class="fa-solid fa-briefcase"></i>
+                            <h4>تعزيز مهارات العمل</h4>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="module-section">
+                    <h4>3. ممارسات السلوك الآمن على الإنترنت</h4>
+                    <div class="enhanced-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>الممارسة</th>
+                                    <th>الوصف</th>
+                                    <th>الأهمية</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>عدم مشاركة البيانات</td>
+                                    <td>عدم نشر معلومات شخصية</td>
+                                    <td>عالي جداً</td>
+                                </tr>
+                                <tr>
+                                    <td>التحقق من الروابط</td>
+                                    <td>فحص الروقبل الضغط</td>
+                                    <td>عالي</td>
+                                </tr>
+                                <tr>
+                                    <td>كلمات مرور قوية</td>
+                                    <td>استخدام كلمات مرور معقدة</td>
+                                    <td>عالي</td>
+                                </tr>
+                                <tr>
+                                    <td>المصادقة الثنائية</td>
+                                    <td>تفعيل 2FA للحسابات</td>
+                                    <td>عالي جداً</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="module-section">
+                    <h4>4. طرق نشر الوعي داخل المؤسسات</h4>
+                    <ul class="module-points">
+                        <li>الدورات التدريبية المنتظمة</li>
+                        <li>محاضرات التوعية بالأمثلة</li>
+                        <li>اختبارات التصيد الاحتيالي</li>
+                        <li>نشر إرشادات وأدلة استخدام</li>
+                        <li>قنوات داخلية للتبليغ</li>
+                        <li>بناء ثقافة "التحقق قبل الضغط"</li>
+                    </ul>
+                </div>
+                
+                <div class="module-section">
+                    <h4>5. استخدام المنصات الرقمية للتعلم الذاتي</h4>
+                    <div class="tip-badge">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <strong>منصات مجانية للتعلم:</strong>
+                    </div>
+                    <ul class="module-points" style="margin-top:10px;">
+                        <li>YouTube (قنوات متخصصة)</li>
+                        <li>Coursera (دورات مجانية)</li>
+                        <li>Udemy (كورسات متنوعة)</li>
+                        <li>Cybrary (متخصص في الأمن)</li>
+                        <li>منصات عربية: دروب، رواق، إدراك</li>
+                    </ul>
+                </div>
+                
+                <div class="module-section">
+                    <h4>6. حملات التوعية وخطوات تنفيذها</h4>
+                    <ol class="module-points" style="list-style-type: decimal; padding-right: 40px;">
+                        <li>تحديد الهدف</li>
+                        <li>تحديد الفئة المستهدفة</li>
+                        <li>جمع المحتوى</li>
+             <li>تنفيذ التدريب</li>
+                        <li>إرسال رسائل دورية</li>
+                        <li>تقييم النتائج</li>
+                        <li>المتابعة المستمرة</li>
+                    </ol>
+                </div>
+                
+                <div class="module-section">
+                    <h4>7. أمثلة على الأخطاء البشرية المؤدية للاختراق</h4>
+                    <div class="warning-badge">
+                        <i class="fa-solid fa-user-times"></i>
+                        <strong>80% من الاختراقات بسبب أخطاء بشرية!</strong>
+                    </div>
+                    <ul class="module-points" style="margin-top:10px;">
+                        <li>فتح رسائل تصيد</li>
+                        <li>إعادة استخدام كلمة المرور</li>
+                        <li>مشاركة كلمة المرور</li>
+                        <li>استخدام شبكات Wi-Fi عامة</li>
+                        <li>تحميل تطبيقات غير رسمية</li>
+                        <li>عدم تحديث الهاتف</li>
+                    </ul>
+                </div>
+                
+                <div class="module-section">
+                    <h4>8. أهمية المتابعة والتحديث المستمر</h4>
+                    <div class="success-badge">
+                        <i class="fa-solid fa-sync-alt"></i>
+                        <strong>لماذا يجب المتابعة المستمرة؟</strong>
+                    </div>
+                    <ul class="module-points" style="margin-top:10px;">
+                        <li>ظهور تهديدات جديدة يومياً</li>
+                        <li>البرامج القديمة تحتوي ثغرات</li>
+                        <li>أدوات الحماية تحتاج تحديث</li>
+                        <li>الحسابات تحتاج مراجعة دورية</li>
+                        <li>الوعي نفسه يحتاج تحديث</li>
+                    </ul>
+                    
+                    <div class="tip-badge" style="margin-top:15px;">
+                        <i class="fa-solid fa-calendar-alt"></i>
+                        <strong>جدول المتابعة المقترح:</strong>
+                        <ul style="margin:10px 0; padding-right:20px;">
+                            <li>يومياً: متابعة الأخبار الأمنية</li>
+                            <li>أسبوعياً: تحديث التطبيقات</li>
+                            <li>شهرياً: مراجعة إعدادات الخصوصية</li>
+                            <li>ربع سنوياً: تغيير كلمات المرور</li>
+                            <li>سنوياً: تدريب على أحدث التهديدات</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- INFOGRAPHIC SECTION -->
+<div class="infographic">
+    <h3 style="margin-top:25px;"> 📊 الوعي السيبراني والتثقيف الذاتي   </h3>
+    <img src="../assets/images/السادس 2.jpg"
+         alt="Infographic"
+         class="infographic-img">
+</div>
+            </div>
+            
+          <!-- ===== HINT SECTION - MODULE 6 ===== -->
+<div class="hint-section" style="text-align:center; margin:30px auto; font-family:Arial;">
+
+    <h3 style="color:#1f3c88;">💡 تلميحة الكترونيه</h3>
+    <p>اضغط على المصباح لرؤية تلميحة مهمة حول تطوير الوعي السيبراني</p>
+
+    <!-- اللمبة -->
+    <img 
+        src="https://cdn-icons-png.flaticon.com/512/702/702797.png"
+        id="bulb-module6"
+        style="width:80px; cursor:pointer; transition:0.3s; filter:grayscale(100%); opacity:0.6;"
+        onclick="toggleHintModule6()"
+        alt="لمبة التلميحة"
+    >
+
+    <!-- التلميحة -->
+    <div 
+        id="module6-hint"
+        style="display:none; margin-top:15px; padding:15px; background:#f4f8ff; border-radius:12px; text-align:right;"
+    >
+        <h4>🧠 تلميحة الموديول السادس: بناء مناعة رقمية ضد هجمات المخترقين</h4>
+        <p>تعلم كيفية تطوير "مناعة رقمية" تحميك تلقائياً من هجمات المخترقين:</p>
+
+        <ul>
+            <li><strong>المستوى 1: المناعة الأساسية</strong>  
+                كلمات مرور فريدة، المصادقة الثنائية، تحديث البرامج تلقائياً، وعدم مشاركة المعلومات الشخصية.</li>
+            <li><strong>المستوى 2: المناعة المتقدمة</strong>  
+                استخدام مدير كلمات المرور، VPN على الشبكات العامة، فحص الروابط قبل الضغط، النسخ الاحتياطي المنتظم للبيانات.</li>
+            <li><strong>المستوى 3: المناعة الاحترافية</strong>  
+                فهم أساسيات التشفير، استخدام البريد المشفر، مراقبة حساباتك للاختراقات، تعلم قراءة تقارير الأمان.</li>
+        </ul>
+
+        <div style="margin-top:15px; text-align:center;">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" 
+                 style="width:150px; border-radius:12px;" 
+                 alt="بناء مناعة رقمية ضد الهجمات">
+        </div>
+
+        <div style="margin-top:15px; padding:10px; background:#fff3cd; border-radius:8px; border:1px solid #ffeeba; text-align:right;">
+            <strong>💡 معلومة مهمة:</strong> يستخدم المخترقون تقنيات "الهندسة الاجتماعية العكسية" حيث تجعل الضحية تعتقد أنها تتحكم في الموقف بينما هي تقع في الفخ!
+        </div>
+
+        <div style="margin-top:15px; padding:10px; background:#d1ecf1; border-radius:8px; border:1px solid #bee5eb; text-align:right;">
+            <strong>🛡️ نصيحة احترافية:</strong> حوّل الوعي السيبراني إلى عادة يومية. ابدأ بخمس دقائق يومياً لمتابعة أخبار الأمن، وزد الوقت تدريجياً حتى تصبح مطلعاً على آخر التهديدات.
+        </div>
+    </div>
+</div>
+
+
+
+<!-- ===== MODULE PODCAST CYBER AWARENESS ARABIC ===== -->
+<div class="module-podcast" style="border:1px solid #ccc; padding:20px; border-radius:10px; width:100%; font-family:Arial, sans-serif; background-color:#f9f9f9;">
+
+    <h3 style="color:#1f3c88;">🎧 بودكاست: الوعي السيبراني والتثقيف الذاتي</h3>
+    <p style="line-height:1.6; color:#333;">
+        بودكاست عربي/إنجليزي عن الوعي السيبراني والتثقيف الذاتي
+        يساعدكِ تفهمي طرق حماية نفسك وبياناتك على الإنترنت.
+    </p>
+
+    <a 
+        href="https://soundcloud.com/hemayagroup/tracks"
+        style="display:inline-block; margin-top:15px; padding:10px 20px; background-color:#1f3c88; color:#fff; text-decoration:none; border-radius:5px;"
+    >
+        ▶️ استمع للبودكاست الآن
+    </a>
+
+</div>
+
+<!-- أيقونة السؤال المتألقة - MODULE 6 -->
+<div style="text-align: center; margin: 25px auto;">
+    <div style="position: relative; display: inline-block;">
+        <img src="../assets/images/que1.jpg"
+             class="question-icon"
+             alt="نشاط"
+             style="width: 90px; height: 90px; object-fit: cover; border-radius: 50%; cursor: pointer; box-shadow: 0 0 15px rgba(255,215,0,0.5), 0 4px 12px rgba(0,0,0,0.2); transition: all 0.3s ease; animation: glowPulse 1.2s infinite;">
+    </div>
+    <p style="color: #4a6fa5; margin-top: 10px; font-size: 0.85rem;">✨ اضغط على الأيقونة لفتح النشاط ✨</p>
+</div>
+
+<div class="question-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(4px); z-index: 9999; justify-content: center; align-items: center; cursor: pointer;" onclick="closeQuestionModal()">
+    <div style="background: white; border-radius: 28px; max-width: 560px; width: 92%; padding: 35px 30px; text-align: right; box-shadow: 0 25px 50px rgba(0,0,0,0.3); cursor: default; animation: fadeInScale 0.3s ease;" onclick="event.stopPropagation()">
+        <h3 style="color:#1f3c88; text-align:center;">ايقونه السؤال</h3>
+        <p style="text-align:center; margin:10px 0 18px;">
+            <a href="https://view.genially.com/69ca8a7236d7fcfa06f10c3a" target="_blank" class="btn">فتح النشاط</a>
+        </p>
+        <h4 style="margin-bottom:10px;">التعليمات - تعليمات حل النشاط</h4>
+        <ul style="line-height:1.9; padding-right:20px;">
+            <li>اقرأ محتوى النشاط جيدًا قبل البدء.</li>
+            <li>تابع الصفحات أو العناصر التفاعلية بالترتيب (اضغطي على الأسهم أو الأزرار).</li>
+            <li>ركز في كل سؤال أو مهمة مطلوبة منك.</li>
+            <li>اختار الإجابة الصحيحة أو اكتبي إجابتك حسب نوع السؤال.</li>
+            <li>في حالة وجود صور أو عناصر، حاول فهمها وربطها بالمحتوى.</li>
+            <li>ناقش إجاباتك مع زملائك إذا كان النشاط جماعيًا.</li>
+            <li>تأكد من إكمال جميع أجزاء النشاط قبل إنهائه.</li>
+        </ul>
+    </div>
+</div>
+
+            <!-- VIDEO FOR MODULE 6 -->
+<h3 style="margin-top:25px; text-align:center;">🎥 فيديو شرح الموديول السادس</h3>
+
+<video controls width="100%" style="
+    border-radius:12px;
+    margin-top:15px;
+    box-shadow:4px 4px 12px #cbd6f0;
+">
+    <source src="../assets/videos/الموديول السادس.mp4" type="video/mp4">
+    المتصفح الخاص بك لا يدعم تشغيل الفيديو.
+</video>
+         
+            
+            <div style="text-align:center;margin-top:25px; padding:20px; background:var(--bg-lightblue); border-radius:12px;">
+                <h3 style="color:#6ca8ff;">🎓 مبروك! لقد أكملت جميع الموديولات</h3>
+                <p>لقد أصبحت الآن أكثر وعياً بمخاطر العالم الرقمي وأكثر قدرة على حماية نفسك وعائلتك.</p>
+                <button class="btn" onclick="showExamForModule(6)">
+                    <i class="fa-solid fa-graduation-cap"></i> اختبار الموديول السادس
+                </button>
+                <button class="btn" onclick="showSection('contact')" style="margin-right:10px;">
+                    <i class="fa-solid fa-envelope"></i> تواصل معنا للمزيد
+                </button>
+                <button class="btn btn-secondary" onclick="showSection('modules')" style="margin-right:10px;">
+                    <i class="fa-solid fa-arrow-right"></i> مراجعة الموديولات
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TOOLS SECTION -->
+<section id="tools" class="section">
+    <div class="card">
+        <h2 style="text-align:center;">🛠️ أدوات الأمن السيبراني</h2>
+        <p style="text-align:center;">تعرف على أهم الأدوات المستخدمة في مجال الأمن السيبراني:</p>
+        
+        <div class="tools-grid">
+            <!-- Hashcat -->
+<div class="tool-card">
+    <!-- الجزء العلوي القابل للضغط -->
+    <div onclick="toggleHashcatInfo()" style="cursor:pointer;">
+        <img src="../assets/images/صورة 1.jpg" class="tool-img" alt="Hashcat">
+        <h3>Hashcat</h3>
+        <span class="tool-badge badge-slow">بطيء</span>
+    </div>
+
+    <!-- معلومات الأداة الأساسية (تظهر عند الضغط على صورة الأداة) -->
+    <div class="tool-info" id="hashcat-info" style="display:none;">
+        <h4>التعريف</h4>
+        <p>أداة لاستخراج كلمات المرور من التجزئات</p>
+        <h4>المميزات</h4>
+        <p>تستخدم أساليب متقدمة لاختراق كلمات المرور</p>
+        <h4>الاستخدام</h4>
+        <p>لاختراق كلمات المرور المشفرة باستخدام التجزئة</p>
+        <h4>طريقة العمل</h4>
+        <p>اختبار مجموعة كبيرة من كلمات المرور للعثور على تطابق مع التجزئات المخزنة</p>
+        
+        <!-- اللمبة الإلكترونية أسفل المعلومات الأساسية -->
+        <div style="text-align:center; margin-top:25px; padding-top:15px; border-top:1px dashed #ddd;">
+            <p style="color:#1f3c88; font-size:14px; margin-bottom:10px;">
+                <strong>💡 تلميحة إلكترونية</strong><br>
+                اضغط على المصباح لمعلومات تقنية إضافية
+            </p>
+            
+            <img 
+                src="https://cdn-icons-png.flaticon.com/512/702/702797.png"
+                id="bulb-hashcat"
+                style="width:45px; cursor:pointer; transition:0.3s; filter:grayscale(100%); opacity:0.7;"
+                onclick="toggleHashcatHint()"
+                alt="لمبة التلميحة"
+                title="انقر لعرض معلومات تقنية إضافية"
+            >
+        </div>
+    </div>
+    
+    <!-- التلميحة الإلكترونية (تظهر عند الضغط على اللمبة) -->
+    <div 
+        id="hashcat-hint"
+        style="display:none; margin-top:10px; padding:15px; background:#f0f7ff; border-radius:10px; text-align:right; border:1px solid #c5d9ff;"
+    >
+        <h4 style="color:#1f3c88; margin-top:0;">
+            <span style="background:#1f3c88; color:white; padding:3px 8px; border-radius:5px; margin-left:5px;">+</span>
+            معلومات تقنية متقدمة عن Hashcat
+        </h4>
+        <div style="background:white; padding:15px; border-radius:8px;">
+            <ul style="list-style-type:none; padding-right:0;">
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">✅ تدعم 300+ خوارزمية:</strong><br>
+                    مثل MD5, SHA1, SHA256, NTLM, bcrypt وغيرها
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">⚡ تعمل على GPU:</strong><br>
+                    تسرع عملية الكسر باستخدام كروت الشاشة
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">🎯 أنواع الهجمات المدعومة:</strong><br>
+                    • Brute-force (هجوم القوة الغاشمة)<br>
+                    • Dictionary (هجوم القاموس)<br>
+                    • Hybrid (هجوم هجين)
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">📊 استخدامات مشروعة:</strong><br>
+                    - اختبار اختراق أخلاقي<br>
+                    - مراجعة أمنية للأنظمة<br>
+                    - استعادة كلمات مرور مفقودة (بترخيص)
+                </li>
+            </ul>
+            
+            <div style="background:#fff8e1; padding:12px; border-radius:8px; border-right:4px solid #ffb300; margin-top:15px;">
+                <p style="color:#5d4037; font-size:13px; margin:0; text-align:center;">
+                    <strong>🔒 استخدام أخلاقي:</strong> هذه الأداة مخصصة للاختبارات الأمنية المصرح بها فقط
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+            
+            <!-- Wireshark -->
+<div class="tool-card">
+    <!-- الجزء العلوي القابل للضغط -->
+    <div onclick="toggleWiresharkInfo()" style="cursor:pointer;">
+        <img src="../assets/images/صورة 2.jpg" class="tool-img" alt="Wireshark">
+        <h3>Wireshark</h3>
+        <span class="tool-badge badge-slow"></span>
+    </div>
+
+    <!-- معلومات الأداة الأساسية (تظهر عند الضغط على صورة الأداة) -->
+    <div class="tool-info" id="wireshark-info" style="display:none;">
+        <h4>التعريف</h4>
+        <p>أداة لتحليل بروتوكولات الشبكة وحركة البيانات</p>
+        <h4>المميزات</h4>
+        <p>فحص الحزم المرسلة عبر الشبكة بدقة عالية</p>
+        <h4>الاستخدام</h4>
+        <p>لتحليل حركة الشبكة وكشف الأنماط المشبوهة</p>
+        <h4>طريقة العمل</h4>
+        <p>مراقبة حركة الشبكة وتسجيل الحزم المرسلة مما يساعد في تشخيص المشكلات الأمنية أو التقنية</p>
+        
+        <!-- اللمبة الإلكترونية أسفل المعلومات الأساسية -->
+        <div style="text-align:center; margin-top:25px; padding-top:15px; border-top:1px dashed #ddd;">
+            <p style="color:#1f3c88; font-size:14px; margin-bottom:10px;">
+                <strong>💡 تلميحة إلكترونية</strong><br>
+                اضغط على المصباح لمعلومات تقنية إضافية
+            </p>
+            
+            <img 
+                src="https://cdn-icons-png.flaticon.com/512/702/702797.png"
+                id="bulb-wireshark"
+                style="width:45px; cursor:pointer; transition:0.3s; filter:grayscale(100%); opacity:0.7;"
+                onclick="toggleWiresharkHint()"
+                alt="لمبة التلميحة"
+                title="انقر لعرض معلومات تقنية إضافية"
+            >
+        </div>
+    </div>
+    
+    <!-- التلميحة الإلكترونية (تظهر عند الضغط على اللمبة) -->
+    <div 
+        id="wireshark-hint"
+        style="display:none; margin-top:10px; padding:15px; background:#f0f7ff; border-radius:10px; text-align:right; border:1px solid #c5d9ff;"
+    >
+        <h4 style="color:#1f3c88; margin-top:0;">
+            <span style="background:#1f3c88; color:white; padding:3px 8px; border-radius:5px; margin-left:5px;">+</span>
+            معلومات تقنية متقدمة عن Wireshark
+        </h4>
+        <div style="background:white; padding:15px; border-radius:8px;">
+            <ul style="list-style-type:none; padding-right:0;">
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">🌐 بروتوكولات مدعومة:</strong><br>
+                    يدعم تحليل أكثر من 3000 بروتوكول شبكة مختلف
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">🔍 ميزات الفلترة:</strong><br>
+                    • فلترة حزم البيانات حسب البروتوكول<br>
+                    • فلترة حسب عناوين IP والمصادر<br>
+                    • فلترة حسب المحتوى والنماذج
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">📊 قدرات التحليل:</strong><br>
+                    - إحصاءات حية لحركة الشبكة<br>
+                    - تحليل تسلسل الحزم<br>
+                    - كشف الحزم المشبوهة والأخطاء
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">🎯 استخدامات أمنية:</strong><br>
+                    • مراقبة حركة الشبكة لاكتشاف الاختراقات<br>
+                    • تحليل هجمات DDoS والهجمات الأخرى<br>
+                    • فحص حزم البيانات المشفرة وغير المشفرة
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">💻 التوافق:</strong><br>
+                    يعمل على Windows, Linux, macOS - مفتوح المصدر ومجاني
+                </li>
+            </ul>
+            
+            <div style="background:#e8f5e9; padding:12px; border-radius:8px; border-right:4px solid #4caf50; margin-top:15px;">
+                <p style="color:#2e7d32; font-size:13px; margin:0; text-align:center;">
+                    <strong>👁️ ملاحظة أخلاقية:</strong> استخدام Wireshark على شبكات غير مصرح بها قد يعتبر انتهاكاً للخصوصية
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+            
+            <!-- OpenVAS -->
+<div class="tool-card">
+    <!-- الجزء العلوي القابل للضغط -->
+    <div onclick="toggleOpenVASInfo()" style="cursor:pointer;">
+        <img src="../assets/images/صورة 3.jpg" class="tool-img" alt="OpenVAS">
+        <h3>OpenVAS</h3>
+        <span class="tool-badge badge-slow"></span>
+    </div>
+
+    <!-- معلومات الأداة الأساسية (تظهر عند الضغط على صورة الأداة) -->
+    <div class="tool-info" id="openvas-info" style="display:none;">
+        <h4>التعريف</h4>
+        <p>أداة مفتوحة المصدر لفحص الثغرات الأمنية</p>
+        <h4>المميزات</h4>
+        <p>فحص شامل للثغرات الأمنية في الشبكات</p>
+        <h4>الاستخدام</h4>
+        <p>لكشف الثغرات الأمنية وتحليلها</p>
+        <h4>طريقة العمل</h4>
+        <p>فحص الشبكة والتطبيقات لكشف الثغرات والمشكلات</p>
+        
+        <!-- اللمبة الإلكترونية أسفل المعلومات الأساسية -->
+        <div style="text-align:center; margin-top:25px; padding-top:15px; border-top:1px dashed #ddd;">
+            <p style="color:#1f3c88; font-size:14px; margin-bottom:10px;">
+                <strong>💡 تلميحة إلكترونية</strong><br>
+                اضغط على المصباح لمعلومات تقنية إضافية
+            </p>
+            
+            <img 
+                src="https://cdn-icons-png.flaticon.com/512/702/702797.png"
+                id="bulb-openvas"
+                style="width:45px; cursor:pointer; transition:0.3s; filter:grayscale(100%); opacity:0.7;"
+                onclick="toggleOpenVASHint()"
+                alt="لمبة التلميحة"
+                title="انقر لعرض معلومات تقنية إضافية"
+            >
+        </div>
+    </div>
+    
+    <!-- التلميحة الإلكترونية (تظهر عند الضغط على اللمبة) -->
+    <div 
+        id="openvas-hint"
+        style="display:none; margin-top:10px; padding:15px; background:#f0f7ff; border-radius:10px; text-align:right; border:1px solid #c5d9ff;"
+    >
+        <h4 style="color:#1f3c88; margin-top:0;">
+            <span style="background:#1f3c88; color:white; padding:3px 8px; border-radius:5px; margin-left:5px;">+</span>
+            معلومات تقنية متقدمة عن OpenVAS
+        </h4>
+        <div style="background:white; padding:15px; border-radius:8px;">
+            <ul style="list-style-type:none; padding-right:0;">
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">🛡️ بنية النظام:</strong><br>
+                    يتكون من مكونات متعددة: مدير OpenVAS، ماسح ضوئي، قاعدة معرفة الثغرات (NVT)
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">🔍 قواعد الاكتشاف:</strong><br>
+                    • يحتوي على أكثر من 100,000 اختبار للثغرات (NVT)<br>
+                    • تحديثات يومية لقواعد الاكتشاف<br>
+                    • دعم اختبارات الثغرات المعروفة (CVEs)
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">📊 أنواع الفحوصات:</strong><br>
+                    - فحص كامل للمضيفين والشبكات<br>
+                    - فحوصات متوسطة وسريعة حسب الحاجة<br>
+                    - فحص التطبيقات والخدمات المكشوفة
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">🎯 التقارير والتحليل:</strong><br>
+                    • إنشاء تقارير تفصيلية بتنسيقات متعددة (PDF, HTML, XML)<br>
+                    • تصنيف الثغرات حسب خطورتها (عالية، متوسطة، منخفضة)<br>
+                    • توصيات علاجية لكل ثغرة مكتشفة
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">💻 التوافق والإدارة:</strong><br>
+                    يعمل على أنظمة Linux - واجهة إدارة ويب (Greenbone Security Assistant) - دعم المصادقة والتوثيق
+                </li>
+            </ul>
+            
+            <div style="background:#e8f5e9; padding:12px; border-radius:8px; border-right:4px solid #4caf50; margin-top:15px;">
+                <p style="color:#2e7d32; font-size:13px; margin:0; text-align:center;">
+                    <strong>⚖️ مفتوح المصدر:</strong> OpenVAS هو البديل المفتوح المصدر لأدوات الفحص التجارية
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+            
+           <!-- Nessus -->
+<div class="tool-card"    <!-- الجزء العلوي القابل للضغط -- >   <div onclick="toggleNessusInfo()" style="cursor:pointer;">
+        <img src="../assets/images/صورة 4.jpg" class="tool-img" alt="Nessus">
+        <h3>Nessus</h3>
+        <span class="tool-badge badge-efficient"></span>
+    </div>
+
+    <!-- معلومات الأداة الأساسية (تظهر عند الضغط على صورة الأداة) -->
+    <div class="tool-info" id="nessus-info" style="display:none;">        <h4>التعريف</h4>
+        <p>أداة لفحص الثغرات الأمنية</p>
+        <h4>الميزات</h4>
+        <p>فحص شامل للشبكة لكشف الثغرات</p>
+        <h4>الاستخدام</h4>
+        <p>لكشف الثغرات الأمنية في النظام والشبكة</p>
+        <h4>طريقة العمل</h4>
+        <p>فحص الشبكة والأجهزة المتصلة لكشف الثغرات</p>
+        
+        <!-- اللمبة الإلكترونية أسفل المعلومات الأساسية -->
+        <div style="text-align:center; margin-top:25px; padding-top:15px; border-top:1px dashed #ddd;">
+            <p style="color:#1f3c88; font-size:14px; margin-bottom:10px;">
+                <strong>💡 تلميحة إلكترونية</strong><br>
+                اضغط على المصباح لمعلومات تقنية إضافية
+            </p>
+            
+            <img 
+                src="https://cdn-icons-png.flaticon.com/512/702/702797.png"
+                id="bulb-nessus"
+                style="width:45px; cursor:pointer; transition:0.3s; filter:grayscale(100%); opacity:0.7;"
+                onclick="toggleNessusHint()"
+                alt="لمبة التلميحة"
+                title="انقر لعرض معلومات تقنية إضافية"
+            >
+        </div>
+    </div>
+    
+    <!-- التلميحة الإلكترونية (تظهر عند الضغط على اللمبة) -->
+    <div 
+        id="nessus-hint"
+        style="display:none; margin-top:10px; padding:15px; background:#f0f7ff; border-radius:10px; text-align:right; border:1px solid #c5d9ff;"
+    >
+        <h4 style="color:#1f3c88; margin-top:0;">
+            <span style="background:#1f3c88; color:white; padding:3px 8px; border-radius:5px; margin-left:5px;">+</span>
+            معلومات تقنية متقدمة عن Nessus
+        </h4>
+        <div style="background:white; padding:15px; border-radius:8px;">
+            <ul style="list-style-type:none; padding-right:0;">
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">🎯 أنواع الفحوصات:</strong><br>
+                    • فحص الثغرات المعروفة (CVEs)<br>
+                    • فحص التكوينات الخاطئة<br>
+                    • اكتشاف البرمجيات الضارة
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">🔍 قواعد الفحص:</strong><br>
+                    يحتوي على أكثر من 177,000 إجراء فحص (plugins)<br>
+                    تحديثات مستمرة لقواعد الفحص
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">📊 قدرات الفحص:</strong><br>
+                    - فحص الشبكات المحلية والبعيدة<br>
+                    - فحص أنظمة التشغيل والتطبيقات<br>
+                    - كشف الثغرات في الأجهزة الذكية
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">📈 التقارير والتحليل:</strong><br>
+                    • تقارير تفصيلية مع تصنيف خطورة الثغرات<br>
+                    • توصيات علاجية محددة<br>
+                    • مقارنة بين نتائج الفحوصات المختلفة
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">💻 النسخ المتاحة:</strong><br>
+                    • Nessus Professional (مدفوعة)<br>
+                    • Nessus Essentials (مجانية محدودة)<br>
+                    يعمل على Windows, Linux, macOS
+                </li>
+            </ul>
+            
+            <div style="background:#e8f5e9; padding:12px; border-radius:8px; border-right:4px solid #4caf50; margin-top:15px;">
+                <p style="color:#2e7d32; font-size:13px; margin:0; text-align:center;">
+                    <strong>🔐 من Tenable:</strong> Nessus هو منتج تجاري من شركة Tenable للحلول الأمنية
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+            
+            <!-- AlienVault -->
+<div class="tool-card">
+    <!-- الجزء العلوي القابل للضغط -->
+    <div onclick="toggleAlienVaultInfo()" style="cursor:pointer;">
+        <img src="../assets/images/صورة 5.jpg" class="tool-img" alt="AlienVault">
+        <h3>AlienVault</h3>
+        <span class="tool-badge badge-efficient"></span>
+    </div>
+
+   <!-- معلومات الأداة الأساسية (تظهر عند الضغط على صورة الأداة) -->
+    <div class="tool-info" id="alienvault-info" style="display:none;">
+        <h4>التعريف</h4>
+        <p>حل شامل لإدارة الأحداث الأمنية واكتشاف التسلل</p>
+        <h4>الميزات</h4>
+        <p>اكتشاف التهديدات ومراقبة الأنظمة</p>
+        <h4>الاستخدام</h4>
+        <p>إدارة الحوادث الأمنية وكشف التهديدات</p>
+        <h4>طريقة العمل</h4>
+        <p>جمع وتحليل البيانات من الأنظمة المختلفة لاكتشاف التهديدات</p>
+        
+        <!-- اللمبة الإلكترونية أسفل المعلومات الأساسية -->
+        <div style="text-align:center; margin-top:25px; padding-top:15px; border-top:1px dashed #ddd;">
+            <p style="color:#1f3c88; font-size:14px; margin-bottom:10px;">
+                <strong>💡 تلميحة إلكترونية</strong><br>
+                اضغط على المصباح لمعلومات تقنية إضافية
+            </p>
+            
+            <img 
+                src="https://cdn-icons-png.flaticon.com/512/702/702797.png"
+                id="bulb-alienvault"
+                style="width:45px; cursor:pointer; transition:0.3s; filter:grayscale(100%); opacity:0.7;"
+                onclick="toggleAlienVaultHint()"
+                alt="لمبة التلميحة"
+                title="انقر لعرض معلومات تقنية إضافية"
+            >
+        </div>
+    </div>
+    
+    <!-- التلميحة الإلكترونية (تظهر عند الضغط على اللمبة) -->
+    <div 
+        id="alienvault-hint"
+        style="display:none; margin-top:10px; padding:15px; background:#f0f7ff; border-radius:10px; text-align:right; border:1px solid #c5d9ff;"
+    >
+        <h4 style="color:#1f3c88; margin-top:0;">
+            <span style="background:#1f3c88; color:white; padding:3px 8px; border-radius:5px; margin-left:5px;">+</span>
+            معلومات تقنية متقدمة عن AlienVault
+        </h4>
+        <div style="background:white; padding:15px; border-radius:8px;">
+            <ul style="list-style-type:none; padding-right:0;">
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">🛡️ نظام OSSIM:</strong><br>
+                    النظام الأساسي: Open Source Security Information Management<br>
+                    يجمع بين SIEM، IDS، وتحليل الفعاليات الأمنية
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">🔍 مكونات النظام:</strong><br>
+                    • AlienVault SIEM: لتحليل السجلات الأمنية<br>
+                    • USM: Unified Security Management<br>
+                    • Open Threat Exchange: قاعدة بيانات التهديدات
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">📊 قدرات المراقبة:</strong><br>
+                    - مراقبة حركة الشبكة في الوقت الحقيقي<br>
+                    - كشف التسلل والهجمات<br>
+                    - تحليل السجلات الأمنية من مصادر متعددة
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">🎯 كشف التهديدات:</strong><br>
+                    • قاعدة بيانات تحتوي على توقيعات لـ 60,000+ تهديد<br>
+                    • تحديثات تلقائية لقواعد التهديدات<br>
+                    • تحليل سلوكي لاكتشاف الأنشطة المشبوهة
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">💼 النسخ المتاحة:</strong><br>
+                    • AlienVault OSSIM (مفتوح المصدر)<br>
+                    • AlienVault USM (منصة إدارة أمنية متكاملة)<br>
+                    • حلول سحابية وأون بريميس
+                </li>
+            </ul>
+            
+            <div style="background:#e8f5e9; padding:12px; border-radius:8px; border-right:4px solid #4caf50; margin-top:15px;">
+                <p style="color:#2e7d32; font-size:13px; margin:0; text-align:center;">
+                    <strong>🌐 من AT&T Cybersecurity:</strong> الآن جزء من AT&T Cybersecurity solutions
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+            
+            <!-- Metasploit -->
+            <div class="tool-card" onclick="toggleToolInfo('metasploit')">
+                <img src="../assets/images/صورة 6.jpg" class="tool-img" alt="Metasploit">
+                
+    <div onclick="toggleMetasploitInfo()" style="cursor:pointer;">
+       
+        <h3>Metasploit</h3>
+        <span class="tool-badge badge-efficient">كفاءة عالية</span>
+    </div>
+
+    <!-- معلومات الأداة الأساسية (تظهر عند الضغط على صورة الأداة) -->
+    <div class="tool-info" id="metasploit-info" style="display:none;">
+        <h4>التعريف</h4>
+        <p>إطار عمل لاختبار الاختراق واكتشاف الثغرات</p>
+        <h4>المميزات</h4>
+        <p>يدعم مجموعة واسعة من الهجمات ويحتوي على أدوات متعددة</p>
+        <h4>الاستخدام</h4>
+        <p>لاختبار الاختراق وتحليل الثغرات</p>
+        <h4>طريقة العمل</h4>
+        <p>اختبار الأنظمة بعد اكتشاف الثغرات باستخدام الأدوات المناسبة</p>
+        
+        <!-- اللمبة الإلكترونية أسفل المعلومات الأساسية -->
+        <div style="text-align:center; margin-top:25px; padding-top:15px; border-top:1px dashed #ddd;">
+            <p style="color:#1f3c88; font-size:14px; margin-bottom:10px;">
+                <strong>💡 تلميحة إلكترونية</strong><br>
+                اضغط على المصباح لمعلومات تقنية إضافية
+            </p>
+            
+            <img 
+                src="https://cdn-icons-png.flaticon.com/512/702/702797.png"
+                id="bulb-metasploit"
+                style="width:45px; cursor:pointer; transition:0.3s; filter:grayscale(100%); opacity:0.7;"
+                onclick="toggleMetasploitHint()"
+                alt="لمبة التلميحة"
+                title="انقر لعرض معلومات تقنية إضافية"
+            >
+        </div>
+    </div>
+    
+    <!-- التلميحة الإلكترونية (تظهر عند الضغط على اللمبة) -->
+    <div 
+        id="metasploit-hint"
+        style="display:none; margin-top:10px; padding:15px; background:#f0f7ff; border-radius:10px; text-align:right; border:1px solid #c5d9ff;"
+    >
+        <h4 style="color:#1f3c88; margin-top:0;">
+            <span style="background:#1f3c88; color:white; padding:3px 8px; border-radius:5px; margin-left:5px;">+</span>
+            معلومات تقنية متقدمة عن Metasploit
+        </h4>
+        <div style="background:white; padding:15px; border-radius:8px;">
+            <ul style="list-style-type:none; padding-right:0;">
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">⚙️ إصدارات Metasploit:</strong><br>
+                    • Metasploit Framework (مفتوح المصدر)<br>
+                    • Metasploit Pro (نسخة تجارية)<br>
+                    • Metasploit Community (مجاني محدود)
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">🛠️ المكونات الرئيسية:</strong><br>
+                    - msfconsole: الواجهة الرئيسية للتعامل مع الإطار<br>
+                    - Modules: وحدات الهجوم، الاستغلال، والماسحات الضوئية<br>
+                    - Payloads: أكواد تنفيذية بعد الاستغلال
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">🔧 أنواع الوحدات (Modules):</strong><br>
+                    • Exploits: استغلال الثغرات<br>
+                    • Payloads: أكواد تنفيذية بعد النفاذ<br>
+                    • Auxiliary: أدوات مساعدة للمسح والجمع<br>
+                    • Post: أدوات ما بعد الاختراق
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">🎯 قواعد البيانات:</strong><br>
+                    يحتوي على أكثر من 2,000 exploit<br>
+                    أكثر من 3,000 وحدة مساعدة (auxiliary)<br>
+                    مئات الـ payloads لأنظمة مختلفة
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">💻 التوافق والتركيب:</strong><br>
+                    يعمل على Linux, Windows, macOS<br>
+                    يدعم PostgreSQL لقاعدة البيانات<br>
+                    يمكن دمجه مع Nmap و Nessus
+                </li>
+            </ul>
+            
+            <div style="background:#e8f5e9; padding:12px; border-radius:8px; border-right:4px solid #4caf50; margin-top:15px;">
+                <p style="color:#2e7d32; font-size:13px; margin:0; text-align:center;">
+                    <strong>⚠️ ملاحظة أخلاقية:</strong> استخدام Metasploit على أنظمة بدون إذن يعتبر غير قانوني
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+            
+            <!-- Burp Suite -->
+            <div class="tool-card" >
+<div onclick="toggleMetasploitInfo()" style="cursor:pointer;">
+                <img src="../assets/images/صورة 7.jpg" class="tool-img" alt="Burp Suite">
+            
+    <div onclick="toggleBurpInfo()" style="cursor:pointer;">
+        
+        <h3>Burp Suite</h3>
+        <span class="tool-badge badge-efficient">كفاءة عالية</span>
+    </div>
+    <!-- معلومات الأداة الأساسية (تظهر عند الضغط على صورة الأداة) -->
+    <div class="tool-info" id="burp-info" style="display:none;">
+        <h4>التعريف</h4>
+        <p>إطار عمل لاختبار أمان تطبيقات الويب</p>
+        <h4>المميزات</h4>
+        <p>فحص ثغرات تطبيقات الويب وكشف الثغرات مثل XSS و SQL Injection</p>
+        <h4>الاستخدام</h4>
+        <p>لاختبار أمان تطبيقات الويب</p>
+        <h4>طريقة العمل</h4>
+        <p>تحليل البيانات المرسلة والمستقبلة بين العميل والخادم</p>
+        
+        <!-- اللمبة الإلكترونية أسفل المعلومات الأساسية -->
+        <div style="text-align:center; margin-top:25px; padding-top:15px; border-top:1px dashed #ddd;">
+            <p style="color:#1f3c88; font-size:14px; margin-bottom:10px;">
+                <strong>💡 تلميحة إلكترونية</strong><br>
+                اضغط على المصباح معلومات تقنية إضافية
+            </p>
+            
+            <img 
+                src="https://cdn-icons-png.flaticon.com/512/702/702797.png"
+                id="bulb-burp"
+                style="width:45px; cursor:pointer; transition:0.3s; filter:grayscale(100%); opacity:0.7;"
+                onclick="toggleBurpHint()"
+                alt="لمبة التلميحة"
+                title="انقر لعرض معلومات تقنية إضافية"
+            >
+        </div>
+    </div>
+    
+    <!-- التلميحة الإلكترونية (تظهر عند الضغط على اللمبة) -->
+    <div 
+        id="burp-hint"
+        style="display:none; margin-top:10px; padding:15px; background:#f0f7ff; border-radius:10px; text-align:right; border:1px solid #c5d9ff;"
+    >
+        <h4 style="color:#1f3c88; margin-top:0;">
+            <span style="background:#1f3c88; color:white; padding:3px 8px; border-radius:5px; margin-left:5px;">+</span>
+            معلومات تقنية متقدمة عن Burp Suite
+        </h4>
+        <div style="background:white; padding:15px; border-radius:8px;">
+            <ul style="list-style-type:none; padding-right:0;">
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">💼 الإصدارات المتاحة:</strong><br>
+                    • Burp Suite Community (مجاني مع قيود)<br>
+                    • Burp Suite Professional (مدفوع - كامل الميزات)<br>
+                    • Burp Suite Enterprise (للمؤسسات الكبيرة)
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">🛠️ الأدوات الرئيسية:</strong><br>
+                    - Proxy: اعتراض وتعديل حركة HTTP/HTTPS<br>
+                    - Scanner: فحص تلقائي للثغرات<br>
+                    - Intruder: هجمات مخصصة وإرسال بيانات<br>
+                    - Repeater: إعادة إرسال الطلبات مع تعديلات
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">🔍 قدرات الفحص:</strong><br>
+                    • اكتشاف ثغرات OWASP Top 10<br>
+                    • فحص SQL Injection بأنواعه المختلفة<br>
+                    • اكتشاف XSS (Cross-Site Scripting)<br>
+                    • فحص CSRF (Cross-Site Request Forgery)
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">📊 ميزات متقدمة:</strong><br>
+                    • تحليل خرائط التطبيقات (Site map)<br>
+                    • فك تشفير حركة HTTPS<br>
+                    • دعم WebSockets و REST APIs<br>
+                    • إضافات (Extensions) قابلة للتخصيص
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">💻 التوافق والتكامل:</strong><br>
+                    يعمل على Windows, Linux, macOS<br>
+                    يدعم Java Runtime Environment<br>
+                    يمكن دمجه مع أدوات أخرى عبر API
+                </li>
+            </ul>
+            
+            <div style="background:#e8f5e9; padding:12px; border-radius:8px; border-right:4px solid #4caf50; margin-top:15px;">
+                <p style="color:#2e7d32; font-size:13px; margin:0; text-align:center;">
+                    <strong>🌐 من PortSwigger:</strong> Burp Suite هو المنتج الرئيسي لشركة PortSwigger المتخصصة في أمان الويب
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+            
+            <!-- Splunk -->
+            <div class="tool-card">
+    <!-- الجزء العلوي القابل للضغط -->
+    <div onclick="toggleSplunkInfo()" style="cursor:pointer;">
+                <img src="../assets/images/صورة 8.jpg" class="tool-img" alt="Splunk">
+       <h3>Splunk</h3>
+        <span class="tool-badge badge-efficient">كفاءة عالية</span>
+    </div>
+
+    <!-- معلومات الأداة الأساسية (تظهر عند الضغط على صورة الأداة) -->
+    <div class="tool-info" id="splunk-info" style="display:none;">
+        <h4>التعريف</h4>
+        <p>أداة لتحليل البيانات الكبيرة والسجلات في الوقت الفعلي</p>
+        <h4>المميزات</h4>
+        <p>دعم قوي للتقارير والتنبيهات في الوقت الفعلي</p>
+        <h4>الاستخدام</h4>
+        <p>لتحليل بيانات الأمان في الشبكات والخوادم</p>
+        <h4>طريقة العمل</h4>
+        <p>جمع السجلات والبيانات من الأنظمة المختلفة وتحليلها</p>
+        
+        <!-- اللمبة الإلكترونية أسفل المعلومات الأساسية -->
+        <div style="text-align:center; margin-top:25px; padding-top:15px; border-top:1px dashed #ddd;">
+            <p style="color:#1f3c88; font-size:14px; margin-bottom:10px;">
+                <strong>💡 تلميحة إلكترونية</strong><br>
+                اضغط على المصباح لمعلومات تقنية إضافية
+            </p>
+            
+            <img 
+                src="https://cdn-icons-png.flaticon.com/512/702/702797.png"
+                id="bulb-splunk"
+                style="width:45px; cursor:pointer; transition:0.3s; filter:grayscale(100%); opacity:0.7;"
+                onclick="toggleSplunkHint()"
+                alt="لمبة التلميحة"
+                title="انقر لعرض معلومات تقنية إضافية"
+            >
+        </div>
+    </div>
+    
+    <!-- التلميحة الإلكترونية (تظهر عند الضغط على اللمبة) -->
+    <div 
+        id="splunk-hint"
+        style="display:none; margin-top:10px; padding:15px; background:#f0f7ff; border-radius:10px; text-align:right; border:1px solid #c5d9ff;"
+    >
+        <h4 style="color:#1f3c88; margin-top:0;">
+            <span style="background:#1f3c88; color:white; padding:3px 8px; border-radius:5px; margin-left:5px;">+</span>
+            معلومات تقنية متقدمة عن Splunk
+        </h4>
+        <div style="background:white; padding:15px; border-radius:8px;">
+            <ul style="list-style-type:none; padding-right:0;">
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">📊 إصدارات Splunk:</strong><br>
+                    • Splunk Enterprise (للشركات الكبيرة)<br>
+                    • Splunk Cloud (نسخة سحابية)<br>
+                    • Splunk Free (نسخة مجانية محدودة)
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">🔍 قدرات التحليل:</strong><br>
+                    - معالجة وتحليل السجلات (Logs) في الوقت الحقيقي<br>
+                    - لغة بحث قوية (SPL - Search Processing Language)<br>
+                    - دعم البيانات المهيكلة وغير المهيكلة
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">🎯 في مجال الأمن السيبراني (Splunk for Security):</strong><br>
+                    • SIEM (إدارة الأحداث الأمنية)<br>
+                    • كشف التهديدات والاستجابة لها<br>
+                    • تحليلات سلوك المستخدمين (UBA)<br>
+                    • تطبيقات جاهزة للأمن مثل Splunk Enterprise Security
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">🔄 ميزات متقدمة:</strong><br>
+                    • لوحات تحكم قابلة للتخصيص (Dashboards)<br>
+                    • تقارير مجدولة وتنبيهات ذكية<br>
+                    • Machine Learning والتعلم الآلي<br>
+                    • APIs للدمج مع أنظمة أخرى
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">💻 التوافق والتركيب:</strong><br>
+                    يعمل على Windows, Linux, macOS<br>
+                    يدعم مئات مصادر البيانات المختلفة<br>
+                    بنية قابلة للتوسع للبيانات الكبيرة
+                </li>
+            </ul>
+            
+            <div style="background:#e8f5e9; padding:12px; border-radius:8px; border-right:4px solid #4caf50; margin-top:15px;">
+                <p style="color:#2e7d32; font-size:13px; margin:0; text-align:center;">
+                    <strong>🏢 من Splunk Inc:</strong> Splunk هي منصة رائدة في تحليل البيانات والسجلات للشركات
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+            
+            <!-- Kali Linux -->
+            <div class="tool-card">
+    <!-- الجزء العلوي القابل للضغط -->
+    <div onclick="toggleKaliInfo()" style="cursor:pointer;">
+                <img src="../assets/images/صورة 10.jpg" class="tool-img" alt="Kali Linux">
+
+   <h3>Kali Linux</h3>
+        <span class="tool-badge badge-efficient">كفاءة عالية</span>
+    </div>
+
+    <!-- معلومات الأداة الأساسية (تظهر عند الضغط على صورة الأداة) -->
+    <div class="tool-info" id="kali-info" style="display:none;">
+        <h4>التعريف</h4>
+        <p>نظام تشغيل مخصص لاختبار الاختراق وتحليل الأمان</p>
+        <h4>المميزات</h4>
+        <p>يحتوي على مجموعة كبيرة من الأدوات الخاصة بالأمن السيبراني</p>
+        <h4>الاستخدام</h4>
+        <p>لاختبار الاختراق وتحليل الأمان</p>
+        <h4>طريقة العمل</h4>
+        <p>يوفر مجموعة متنوعة من الأدوات لاختبار الاختراق والفحص الأمني</p>
+        
+        <!-- اللمبة الإلكترونية أسفل المعلومات الأساسية -->
+        <div style="text-align:center; margin-top:25px; padding-top:15px; border-top:1px dashed #ddd;">
+            <p style="color:#1f3c88; font-size:14px; margin-bottom:10px;">
+                <strong>💡 تلميحة إلكترونية</strong><br>
+                اضغط على المصباح لمعلومات تقنية إضافية
+            </p>
+            
+            <img 
+                src="https://cdn-icons-png.flaticon.com/512/702/702797.png"
+                id="bulb-kali"
+                style="width:45px; cursor:pointer; transition:0.3s; filter:grayscale(100%); opacity:0.7;"
+                onclick="toggleKaliHint()"
+                alt="لمبة التلميحة"
+                title="انقر لعرض معلومات تقنية إضافية"
+            >
+        </div>
+    </div>
+    
+    <!-- التلميحة الإلكترونية (تظهر عند الضغط على اللمبة) -->
+    <div 
+        id="kali-hint"
+        style="display:none; margin-top:10px; padding:15px; background:#f0f7ff; border-radius:10px; text-align:right; border:1px solid #c5d9ff;"
+    >
+        <h4 style="color:#1f3c88; margin-top:0;">
+            <span style="background:#1f3c88; color:white; padding:3px 8px; border-radius:5px; margin-left:5px;">+</span>
+            معلومات تقنية متقدمة عن Kali Linux
+        </h4>
+        <div style="background:white; padding:15px; border-radius:8px;">
+            <ul style="list-style-type:none; padding-right:0;">
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">🐉 أصل النظام:</strong><br>
+                    • الخلف السابق: BackTrack Linux<br>
+                    • المطور: Offensive Security<br>
+                    • مبني على: Debian Linux
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">🛠️ فئات الأدوات المتضمنة:</strong><br>
+                    • جمع المعلومات (Information Gathering)<br>
+                    • تحليل الثغرات (Vulnerability Analysis)<br>
+                    • اختبار اختراق التطبيقات (Web Application Analysis)<br>
+                    • اختبار اختراق الشبكات اللاسلكية (Wireless Attacks)<br>
+                    • أدوات ما بعد الاختراق (Post Exploitation)
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">🔧 أدوات مشهورة مدمجة:</strong><br>
+                    - Nmap: مسح الشبكات والمضيفين<br>
+                    - Metasploit Framework: استغلال الثغرات<br>
+                    - Wireshark: تحليل حركة الشبكة<br>
+                    - Burp Suite: اختبار أمان تطبيقات الويب<br>
+                    - John the Ripper: كسر كلمات المرور
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">💿 طرق التثبيت:</strong><br>
+                    • Live Boot (التشغيل مباشرة من USB)<br>
+                    • تثبيت كامل على القرص الصلب<br>
+                    • Kali NetHunter (لأجهزة Android)<br>
+                    • نسخة سحابية وصور افتراضية
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">🎓 الشهادات المرتبطة:</strong><br>
+                    • OSCP (Offensive Security Certified Professional)<br>
+                    • OSWP (Wireless Professional)<br>
+                    • OSWE (Web Expert) وغيرها
+                </li>
+            </ul>
+            
+            <div style="background:#e8f5e9; padding:12px; border-radius:8px; border-right:4px solid #4caf50; margin-top:15px;">
+                <p style="color:#2e7d32; font-size:13px; margin:0; text-align:center;">
+                    <strong>⚖️ استخدام أخلاقي:</strong> Kali Linux للأغراض القانونية فقط مثل اختبار الاختراق المصرح به
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+            
+            <!-- FortiGate -->
+            <div class="tool-card">
+    <!-- الجزء العلوي القابل للضغط -->
+    <div onclick="toggleFortiGateInfo()" style="cursor:pointer;">
+
+                <img src="../assets/images/صورة 11.jpg" class="tool-img" alt="FortiGate">
+     <h3>FortiGate</h3>
+            <span class="tool-badge badge-efficient">كفاءة عالية</span>
+    </div>
+
+    <!-- معلومات الأداة الأساسية (تظهر عند الضغط على صورة الأداة) -->
+    <div class="tool-info" id="fortigate-info" style="display:none;">
+        <h4>التعريف</h4>
+        <p>جدار حماية شبكي من شركة Fortinet</p>
+        <h4>المميزات</h4>
+        <p>جدار حماية من الجيل التالي مع دعم VPN وفحص عميق للحزم</p>
+        <h4>الاستخدام</h4>
+        <p>لحماية الشبكات من الهجمات الخارجية والتهديدات الداخلية</p>
+        <h4>طريقة العمل</h4>
+        <p>تصفية حركة الشبكة باستخدام تقنيات فحص متقدمة وتحليل التهديدات</p>
+        
+        <!-- اللمبة الإلكترونية أسفل المعلومات الأساسية -->
+        <div style="text-align:center; margin-top:25px; padding-top:15px; border-top:1px dashed #ddd;">
+            <p style="color:#1f3c88; font-size:14px; margin-bottom:10px;">
+                <strong>💡 تلميحة إلكترونية</strong><br>
+                اضغط على المصباح لمعلومات تقنية إضافية
+            </p>
+            
+            <img 
+                src="https://cdn-icons-png.flaticon.com/512/702/702797.png"
+                id="bulb-fortigate"
+                style="width:45px; cursor:pointer; transition:0.3s; filter:grayscale(100%); opacity:0.7;"
+                onclick="toggleFortiGateHint()"
+                alt="لمبة التلميحة"
+                title="انقر لعرض معلومات تقنية إضافية"
+            >
+        </div>
+    </div>
+    
+    <!-- التلميحة الإلكترونية (تظهر عند الضغط على اللمبة) -->
+    <div 
+        id="fortigate-hint"
+        style="display:none; margin-top:10px; padding:15px; background:#f0f7ff; border-radius:10px; text-align:right; border:1px solid #c5d9ff;"
+    >
+        <h4 style="color:#1f3c88; margin-top:0;">
+            <span style="background:#1f3c88; color:white; padding:3px 8px; border-radius:5px; margin-left:5px;">+</span>
+            معلومات تقنية متقدمة عن FortiGate
+        </h4>
+        <div style="background:white; padding:15px; border-radius:8px;">
+            <ul style="list-style-type:none; padding-right:0;">
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">🏢 نطاق المنتجات:</strong><br>
+                    • سلسلة FortiGate للأعمال الصغيرة (40F, 60F)<br>
+                    • سلسلة للمؤسسات المتوسطة (100F, 200F)<br>
+                    • سلسلة للشركات الكبيرة والحكومات (1000F وما فوق)<br>
+                    • سلسلة لحماية مراكز البيانات (اليومين و)
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">🛡️ قدرات أمنية متقدمة:</strong><br>
+                    - NGFW (جدار حماية الجيل التالي)<br>
+                    - IPS/IDS (أنظمة منع وكشف التسلل)<br>
+                    - مكافحة الفيروسات وبرامج التجسس<br>
+                    - منع فقدان البيانات (DLP)<br>
+                    - فحص SSL/TLS المشفر
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">🔗 ميزات الشبكات:</strong><br>
+                    • دعم VPN (IPSec, SSL-VPN)<br>
+                    • موازنة التحميل (Load Balancing)<br>
+                    • QoS (جودة الخدمة)<br>
+                    • التوجيه الديناميكي والثابت
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">☁️ إدارة وتكامل:</strong><br>
+                    • FortiManager لإدارة المركزية<br>
+                    • FortiAnalyzer للتقارير والتحليل<br>
+                    • FortiCloud للخدمات السحابية<br>
+                    • FortiGuard Labs لتحديثات التهديدات
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">💻 خيارات النشر:</strong><br>
+                    - أجهزة مادية (Hardware Appliances)<br>
+                    - إصدارات افتراضية (VM)<br>
+                    - سحابية على AWS, Azure, GCP<br>
+                    - كخدمة (FWaaS)
+                </li>
+            </ul>
+            
+            <div style="background:#e8f5e9; padding:12px; border-radius:8px; border-right:4px solid #4caf50; margin-top:15px;">
+                <p style="color:#2e7d32; font-size:13px; margin:0; text-align:center;">
+                    <strong>🔒 من Fortinet:</strong> FortiGate هو المنتج الرئيسي لشركة Fortinet في مجال أمن الشبكات
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+            <!-- CrowdStrike - تم التعديل -->
+            <div class="tool-card">
+    <!-- الجزء العلوي القابل للضغط -->
+    <div onclick="toggleCrowdStrikeInfo()" style="cursor:pointer;">
+                <img src="../assets/images/صورة 12.jpg" class="tool-img" alt="CrowdStrike">
+              <h3>CrowdStrike</h3>
+        <span class="tool-badge badge-faster">أسرع</span>
+    </div>
+
+    <!-- معلومات الأداة الأساسية (تظهر عند الضغط على صورة الأداة) -->
+    <div class="tool-info" id="crowdstrike-info" style="display:none;">
+        <h4>التعريف</h4>
+        <p>حل أمني قائم على السحابة يوفر حماية متقدمة ضد التهديدات</p>
+        <h4>المميزات</h4>
+        <p>تحليل التهديدات في الوقت الفعلي باستخدام الذكاء الاصطناعي والتعلم الآلي</p>
+        <h4>الاستخدام</h4>
+        <p>لحماية الأنظمة من البرمجيات الخبيثة والهجمات الإلكترونية المتطورة</p>
+        <h4>طريقة العمل</h4>
+        <p>تحليل سلوك الأجهزة وحمايتها من الهجمات باستخدام تقنيات الذكاء الاصطناعي</p>
+        
+        <!-- اللمبة الإلكترونية أسفل المعلومات الأساسية -->
+        <div style="text-align:center; margin-top:25px; padding-top:15px; border-top:1px dashed #ddd;">
+            <p style="color:#1f3c88; font-size:14px; margin-bottom:10px;">
+                <strong>💡 تلميحة إلكترونية</strong><br>
+                اضغط على المصباح لمعلومات تقنية إضافية
+            </p>
+            
+            <img 
+                src="https://cdn-icons-png.flaticon.com/512/702/702797.png"
+                id="bulb-crowdstrike"
+                style="width:45px; cursor:pointer; transition:0.3s; filter:grayscale(100%); opacity:0.7;"
+                onclick="toggleCrowdStrikeHint()"
+                alt="لمبة التلميحة"
+                title="انقر لعرض معلومات تقنية إضافية"
+            >
+        </div>
+    </div>
+    
+    <!-- التلميحة الإلكترونية (تظهر عند الضغط على اللمبة) -->
+    <div 
+        id="crowdstrike-hint"
+        style="display:none; margin-top:10px; padding:15px; background:#f0f7ff; border-radius:10px; text-align:right; border:1px solid #c5d9ff;"
+    >
+        <h4 style="color:#1f3c88; margin-top:0;">
+            <span style="background:#1f3c88; color:white; padding:3px 8px; border-radius:5px; margin-left:5px;">+</span>
+            معلومات تقنية متقدمة عن CrowdStrike
+        </h4>
+        <div style="background:white; padding:15px; border-radius:8px;">
+            <ul style="list-style-type:none; padding-right:0;">
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">🛡️ منصة Falcon:</strong><br>
+                    • Falcon Platform: المنصة السحابية الأساسية<br>
+                    • Falcon Prevent: منع البرمجيات الخبيثة<br>
+                    • Falcon Insight: EDR (اكتشاف الاستجابة لنقاط النهاية)<br>
+                    • Falcon Intelligence: تحليل التهديدات
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">🤖 تقنيات متقدمة:</strong><br>
+                    - الذكاء الاصطناعي والتعلم الآلي للكشف عن التهديدات<br>
+                    - تحليل السلوك في الوقت الحقيقي<br>
+                    - تقنية "Indicator of Attack" بدلاً من "Indicator of Compromise"<br>
+                    - تحليل الذاكرة لاكتشاف الهجمات المخفية
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">🔍 ميزات الأمن:</strong><br>
+                    • منع الهجمات في مرحلة ما قبل التنفيذ<br>
+                    • كشف استغلال الثغرات (Exploit Prevention)<br>
+                    • حماية من هجمات ransomware المتقدمة<br>
+                    • إدارة الثغرات الأمنية (Vulnerability Management)
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">☁️ البنية السحابية:</strong><br>
+                    • لا حاجة لخوادم أو بنية تحتية داخلية<br>
+                    • تحديثات تلقائية وآنية<br>
+                    • قابلية توسع عالية<br>
+                    • بيانات منعزلة لكل عميل (Single-tenant architecture)
+                </li>
+                <li style="margin-bottom:10px;">
+                    <strong style="color:#2c5282;">💻 التوافق والنشر:</strong><br>
+                    - Windows, Linux, macOS, Android, iOS<br>
+                    - خفيف الوزن (Agent صغير الحجم)<br>
+                    - لا يؤثر على أداء النظام<br>
+                    - دعم البيئات الافتراضية والسحابية
+                </li>
+            </ul>
+            
+            <div style="background:#e8f5e9; padding:12px; border-radius:8px; border-right:4px solid #4caf50; margin-top:15px;">
+                <p style="color:#2e7d32; font-size:13px; margin:0; text-align:center;">
+                    <strong>🏆 رائد في السوق:</strong> CrowdStrike هي شركة رائدة في مجال حماية نقاط النهاية السحابية
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+            
+           <!-- FireEye -->
+<div class="tool-card">
+
+    <div onclick="toggleFireEyeInfo()" style="cursor:pointer;">
+        <img src="../assets/images/صورة 13.jpg" class="tool-img" alt="FireEye">
+        <h3>FireEye</h3>
+        <span class="tool-badge badge-efficient">كفاءة عالية</span>
+    </div>
+
+    <div class="tool-info" id="fireeye-info" style="display:none;">
+        <h4>التعريف</h4>
+        <p>نظام متقدم للكشف عن التهديدات السيبرانية وحماية الشبكات.</p>
+
+        <h4>المميزات</h4>
+        <p>تحليل عميق لحركة الشبكة واكتشاف الهجمات المتقدمة.</p>
+
+        <h4>الاستخدام</h4>
+        <p>حماية الشبكات والمؤسسات من الهجمات المستمرة والمتطورة.</p>
+
+        <h4>طريقة العمل</h4>
+        <p>تحليل سلوك الشبكة واكتشاف الأنماط المشبوهة باستخدام تقنيات متقدمة.</p>
+
+        <!-- اللمبة -->
+        <div style="text-align:center; margin-top:25px; border-top:1px dashed #ddd; padding-top:15px;">
+            <p><strong>💡 تلميحة تقنية</strong></p>
+            <img 
+                src="https://cdn-icons-png.flaticon.com/512/702/702797.png"
+                id="bulb-fireeye"
+                style="width:45px; cursor:pointer; filter:grayscale(100%); opacity:0.7;"
+                onclick="toggleFireEyeHint()"
+            >
+        </div>
+    </div>
+
+    <div id="fireeye-hint" style="display:none; background:#f0f7ff; padding:15px; border-radius:10px; margin-top:10px;">
+        <h4>معلومات تقنية عن FireEye</h4>
+        <ul>
+            <li>تحليل الهجمات المتقدمة (APT)</li>
+            <li>Sandboxing لاكتشاف البرمجيات الخبيثة</li>
+            <li>دمج الذكاء الاصطناعي في تحليل التهديدات</li>
+        </ul>
+    </div>
+</div>
+
+
+            
+            <!-- ZAP Proxy -->
+<div class="tool-card">
+
+    <div onclick="toggleZapInfo()" style="cursor:pointer;">
+        <img src="../assets/images/zap.jpg" class="tool-img" alt="ZAP Proxy">
+        <h3>ZAP Proxy</h3>
+        <span class="tool-badge badge-efficient">كفاءة عالية</span>
+    </div>
+
+    <div class="tool-info" id="zap-info" style="display:none;">
+        <h4>التعريف</h4>
+        <p>أداة مفتوحة المصدر لاختبار أمان تطبيقات الويب.</p>
+
+        <h4>المميزات</h4>
+        <p>فحص الثغرات الأمنية وتحليل حركة البيانات.</p>
+
+        <h4>الاستخدام</h4>
+        <p>اختبار أمان مواقع وتطبيقات الويب.</p>
+
+        <h4>طريقة العمل</h4>
+        <p>مراقبة الطلبات بين المتصفح والخادم لاكتشاف الثغرات.</p>
+
+        <!-- اللمبة -->
+        <div style="text-align:center; margin-top:25px; border-top:1px dashed #ddd; padding-top:15px;">
+            <p><strong>💡 تلميحة تقنية</strong></p>
+            <img 
+                src="https://cdn-icons-png.flaticon.com/512/702/702797.png"
+                id="bulb-zap"
+                style="width:45px; cursor:pointer; filter:grayscale(100%); opacity:0.7;"
+                onclick="toggleZapHint()"
+            >
+        </div>
+    </div>
+
+    <div id="zap-hint" style="display:none; background:#f0f7ff; padding:15px; border-radius:10px; margin-top:10px;">
+        <h4>معلومات تقنية عن ZAP Proxy</h4>
+        <ul>
+            <li>كشف XSS و SQL Injection</li>
+            <li>Intercepting Proxy</li>
+            <li>اختبارات أمنية يدوية وآلية</li>
+        </ul>
+    </div>
+</div>
+
+
+            
+            <!-- John the Ripper -->
+<div class="tool-card">
+
+    <div onclick="toggleJohnInfo()" style="cursor:pointer;">
+        <img src="../assets/images/ صورة 14.jpg" class="tool-img" alt="John the Ripper">
+        <h3>John the Ripper</h3>
+        <span class="tool-badge badge-slow">بطيء</span>
+    </div>
+
+    <div class="tool-info" id="john-info" style="display:none;">
+        <h4>التعريف</h4>
+        <p>أداة متخصصة لاختراق كلمات المرور.</p>
+
+        <h4>المميزات</h4>
+        <p>تدعم العديد من خوارزميات التجزئة وتستطيع فك تشفير كلمات المرور.</p>
+
+        <h4>الاستخدام</h4>
+        <p>اختبار قوة كلمات المرور المشفرة.</p>
+
+        <h4>طريقة العمل</h4>
+        <p>تجربة كلمات المرور واكتشاف المطابقات مع التجزئات المخزنة.</p>
+
+        <!-- اللمبة -->
+        <div style="text-align:center; margin-top:25px; border-top:1px dashed #ddd; padding-top:15px;">
+            <p><strong>💡 تلميحة تقنية</strong></p>
+            <img
+                src="https://cdn-icons-png.flaticon.com/512/702/702797.png"
+                id="bulb-john"
+                style="width:45px; cursor:pointer; filter:grayscale(100%); opacity:0.7;"
+                onclick="toggleJohnHint()"
+            >
+        </div>
+    </div>
+
+    <div id="john-hint" style="display:none; background:#f0f7ff; padding:15px; border-radius:10px; margin-top:10px;">
+        <h4>معلومة متقدمة</h4>
+        <ul>
+            <li>يدعم هجمات Brute Force و Dictionary</li>
+            <li>يُستخدم في اختبارات الاختراق الأخلاقية</li>
+            <li>يدعم أنظمة تشغيل متعددة</li>
+        </ul>
+    </div>
+</div>
+
+
+            
+          <!-- Snort -->
+<div class="tool-card">
+
+    <div onclick="toggleSnortInfo()" style="cursor:pointer;">
+        <img src="../assets/images/snort.jpg" class="tool-img" alt="Snort">
+        <h3>Snort</h3>
+        <span class="tool-badge badge-efficient">كفاءة عالية</span>
+    </div>
+
+    <div class="tool-info" id="snort-info" style="display:none;">
+        <h4>التعريف</h4>
+        <p>أداة قوية لاكتشاف ومنع التسلل عبر الشبكة.</p>
+
+        <h4>المميزات</h4>
+        <p>تعمل كنظام كشف التسلل وجدار حماية للوقاية من الهجمات.</p>
+
+        <h4>الاستخدام</h4>
+        <p>مراقبة الشبكات وتحليل حركة البيانات.</p>
+
+        <h4>طريقة العمل</h4>
+        <p>فحص حركة الشبكة وتحديد الأنشطة المشبوهة ومنع الهجمات.</p>
+
+        <!-- اللمبة -->
+        <div style="text-align:center; margin-top:25px; border-top:1px dashed #ddd; padding-top:15px;">
+            <p><strong>💡 تلميحة تقنية</strong></p>
+            <img
+                src="https://cdn-icons-png.flaticon.com/512/702/702797.png"
+                id="bulb-snort"
+                style="width:45px; cursor:pointer; filter:grayscale(100%); opacity:0.7;"
+                onclick="toggleSnortHint()"
+            >
+        </div>
+    </div>
+
+    <div id="snort-hint" style="display:none; background:#f0f7ff; padding:15px; border-radius:10px; margin-top:10px;">
+        <h4>معلومة متقدمة</h4>
+        <ul>
+            <li>IDS / IPS مفتوح المصدر</li>
+            <li>يعتمد على قواعد (Rules) لاكتشاف الهجمات</li>
+            <li>يدعم تحليل الحزم في الزمن الحقيقي</li>
+        </ul>
+    </div>
+</div>
+
+
+        
+        <div style="text-align:center; margin-top:30px;">
+            <p>💡 <strong>ملاحظة:</strong> اضغط على أي أداة لعرض معلومات مفصلة عنها.</p>
+        </div>
+    </div>
+</section>
+
+<!-- EXAMS MAIN PAGE -->
+<section id="exams" class="section">
+    <div class="card">
+        <h2 style="text-align:center;">📚 اختبارات الموديولات</h2>
+        <p style="text-align:center;font-size:18px;">اختر الموديول الذي تريد اختبار نفسك فيه:</p>
+        
+        <div class="modules-grid" style="margin-top:30px;">
+            <div class="module-card" onclick="showExamForModule(1)">
+                <h3>📝 اختبار الموديول الأول</h3>
+                <p>المفاهيم الأساسية في الأمن السيبراني</p>
+                <p><small>5 أسئلة - مستوى: مبتدئ</small></p>
+            </div>
+            
+            <div class="module-card" onclick="showExamForModule(2)">
+                <h3>📝 اختبار الموديول الثاني</h3>
+                <p>التهديدات السيبرانية والبرمجيات الخبيثة</p>
+                <p><small>5 أسئلة - مستوى: متوسط</small></p>
+            </div>
+            
+            <div class="module-card" onclick="showExamForModule(3)">
+                <h3>📝 اختبار الموديول الثالث</h3>
+                <p>حماية الحسابات والبيانات الشخصية</p>
+                <p><small>5 أسئلة - مستوى: متوسط</small></p>
+            </div>
+            
+            <div class="module-card" onclick="showExamForModule(4)">
+                <h3>📝 اختبار الموديول الرابع</h3>
+                <p>أمن الشبكات والاتصال بالإنترنت</p>
+                <p><small>5 أسئلة - مستوى: متقدم</small></p>
+            </div>
+            
+            <div class="module-card" onclick="showExamForModule(5)">
+                <h3>📝 اختبار الموديول الخامس</h3>
+                <p>أمن البريد الإلكتروني والتطبيقات</p>
+                <p><small>5 أسئلة - مستوى: متوسط</small></p>
+            </div>
+            
+            <div class="module-card" onclick="showExamForModule(6)">
+                <h3>📝 اختبار الموديول السادس</h3>
+                <p>الوعي السيبراني والتثقيف الذاتي</p>
+                <p><small>5 أسئلة - مستوى: مبتدئ</small></p>
+            </div>
+        </div>
+     <div style="text-align:center;margin-top:30px;">
+            <button class="btn btn-secondary" onclick="showSection('modules')">
+                <i class="fa-solid fa-book"></i> عرض جميع الموديولات
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- DEEP TESTS SECTION -->
+<section id="deepTests" class="section">
+    <div class="card">
+        <h2 style="text-align:center;">🧪 الاختبارات العميقة</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;margin:20px 0 10px;">
+            <div class="module-card" style="text-align:center;cursor:pointer;" onclick="document.getElementById('deep-tests-list').scrollIntoView({behavior:'smooth',block:'start'})">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1uvFkq5biM7FtkC1ZPXj1aWh81rW57Vp3h8y8DK85FXDtlw/viewform?usp=publish-editor" target="_blank" style="text-decoration:none;color:inherit;">
+                    <i class="fa-solid fa-flask-vial" style="font-size:32px;color:#667eea;margin-bottom:8px;"></i>
+                    <h3>الاختبار العميق</h3>
+                    <p><small>الانتقال لاختبارات العمق</small></p>
+                </a>
+            </div>
+            <div class="module-card" style="text-align:center;cursor:pointer;" onclick="showSection('scale')">
+               <a href="https://forms.gle/5zm88Kf75D1samTA6" target="_blank" style="text-decoration:none;color:inherit;">
+                    <i class="fa-solid fa-chart-line" style="font-size:32px;color:#2f6bff;margin-bottom:8px;"></i>
+                    <h3>المقياس</h3>
+                    <p><small>الانتقال إلى مقياس التقدم</small></p>
+
+               </a>
+            </div>
+        </div>
+       
+        <div style="text-align:center;margin-top:30px;">
+            <button class="btn btn-secondary" onclick="showSection('modules')">
+                <i class="fa-solid fa-book"></i> عرض الموديولات
+            </button>
+        </div>
+    </div>
+</section>
+
+<section id="scale" class="section">
+    <div class="card" style="text-align:center;">
+        <h2>📈 مقياس الوعي السيبراني</h2>
+        <p style="font-size:17px;">استخدمي هذا الجزء لمتابعة مستوى تقدمك قبل وبعد الاختبارات العميقة.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;margin-top:25px;">
+            <div class="module-card" style="text-align:center;">
+                <i class="fa-solid fa-layer-group" style="font-size:32px;color:#2f6bff;margin-bottom:8px;"></i>
+                <h3>الموديولات</h3>
+                <p>راجعي المحتوى ثم اختبري معرفتك</p>
+                <button class="btn" onclick="showSection('modules')" style="margin-top:10px;">الذهاب للموديولات</button>
+            </div>
+            <div class="module-card" style="text-align:center;">
+                <i class="fa-solid fa-file-circle-check" style="font-size:32px;color:#00a96e;margin-bottom:8px;"></i>
+                <h3>الاختبارات</h3>
+                <p>قيّمي مستواك العام في الاختبارات</p>
+                <button class="btn" onclick="showSection('exams')" style="margin-top:10px;">الذهاب للاختبارات</button>
+            </div>
+        </div>
+        <div style="margin-top:25px;">
+            <button class="btn btn-secondary" onclick="showSection('deepTests')">العودة إلى الاختبار العميق</button>
+        </div>
+    </div>
+</section>
+
+<!-- Module 1 Exam -->
+<section id="module1-exam" class="section">
+    <div class="card" style="text-align:right;">
+        <h2 style="text-align:center;">📝 اختبار الموديول الأول: المفاهيم الأساسية في الأمن السيبراني</h2>
+        <p>أجب عن الأسئلة التالية، ثم اضغط على "إرسال النتيجة":</p>
+
+        <ol style="line-height:1.9;">
+            <li>
+                الأمن السيبراني يهتم بـ:
+                <br>
+                <label><input type="radio" name="q1" value="a"> حماية الأجهزة فقط</label><br>
+                <label><input type="radio" name="q1" value="b"> تصميم المواقع الإلكترونية</label><br>
+                <label><input type="radio" name="q1" value="c"> حماية الأجهزة والشبكات والبيانات والبرامج</label>
+            </li><br>
+
+            <li>
+                من أنواع التهديدات الداخلية:
+                <br>
+                <label><input type="radio" name="q2" value="a"> الهكرز من دول أخرى</label><br>
+                <label><input type="radio" name="q2" value="b"> الموظف الحالي الذي يتعمد تسريب البيانات</label><br>
+                <label><input type="radio" name="q2" value="c"> برامج الفدية فقط</label>
+            </li><br>
+
+            <li>
+                عناصر مثلث الأمان السيبراني (CIA) هي:
+                <br>
+                <label><input type="radio" name="q3" value="a"> السرية – التكامل – التوافر</label><br>
+                <label><input type="radio" name="q3" value="b"> السرعة – الدقة – الجمال</label><br>
+                <label><input type="radio" name="q3" value="c"> الصوت – الصورة – الفيديو</label>
+            </li><br>
+
+            <li>
+                الفرق بين الهجوم والاختراق هو:
+                <br>
+                <label><input type="radio" name="q4" value="a"> الهجوم احتمال والاختراق تنفيذ</label><br>
+                <label><input type="radio" name="q4" value="b"> الهجوم تنفيذ والاختراق نجاح الهجوم</label><br>
+                <label><input type="radio" name="q4" value="c"> لا فرق بينهما</label>
+            </li><br>
+
+            <li>
+                من أنواع المصادقة:
+                <br>
+                <label><input type="radio" name="q5" value="a"> كلمة المرور فقط</label><br>
+                <label><input type="radio" name="q5" value="b"> كلمة المرور، الرمز المرسل للهاتف، البصمة</label><br>
+                <label><input type="radio" name="q5" value="c"> البريد الإلكتروني فقط</label>
+            </li>
+        </ol>
+
+        <div style="text-align:center;margin-top:15px;">
+            <button class="btn" onclick="submitModuleExam(1)">إرسال النتيجة</button>
+        </div>
+        <h3 id="module1-result" style="text-align:center;margin-top:15px;"></h3>
+    </div>
+</section>
+
+<!-- Module 2 Exam -->
+<section id="module2-exam" class="section">
+    <div class="card" style="text-align:right;">
+        <h2 style="text-align:center;">📝 اختبار الموديول الثاني: التهديدات السيبرانية والبرمجيات الخبيثة</h2>
+        <p>أجب عن الأسئلة التالية، ثم اضغط على "إرسال النتيجة":</p>
+        
+        <ol style="line-height:1.9;">
+            <li>
+                البرمجيات الخبيثة (Malware) تشمل:
+                <br>
+                <label><input type="radio" name="m2q1" value="a"> الفيروسات والديدان وأحصنة طروادة</label><br>
+                <label><input type="radio" name="m2q1" value="b"> برامج المكافحة فقط</label><br>
+                <label><input type="radio" name="m2q1" value="c"> تطبيقات التواصل الاجتماعي</label>
+            </li><br>
+            
+            <li>
+                ما الفرق بين الفيروس والديدان (Worms)؟
+                <br>
+                <label><input type="radio" name="m2q2" value="a"> الديدان تنتشر بشكل مستقل ولا تحتاج تدخل المستخدم</label><br>
+                <label><input type="radio" name="m2q2" value="b"> الفيروسات أقوى من الديدان</label><br>
+                <label><input type="radio" name="m2q2" value="c"> لا فرق بينهما</label>
+            </li><br>
+            
+            <li>
+                برامج الفدية (Ransomware) تقوم بـ:
+                <br>
+                <label><input type="radio" name="m2q3" value="a"> تحسين أداء الجهاز</label><br>
+                <label><input type="radio" name="m2q3" value="b"> تشفير الملفات وطلب فدية لفك التشفير</label><br>
+                <label><input type="radio" name="m2q3" value="c"> حماية الجهاز من الهجمات</label>
+            </li><br>
+            
+            <li>
+                ما هي هجمات Zero-Day؟
+                <br>
+                <label><input type="radio" name="m2q4" value="a"> هجمات تحدث في منتصف الليل</label><br>
+                <label><input type="radio" name="m2q4" value="b"> ثغرات لم يكتشفها المطورون بعد</label><br>
+                <label><input type="radio" name="m2q4" value="c"> هجمات تحدث كل يوم</label>
+            </li><br>
+            
+            <li>
+                الهندسة الاجتماعية (Social Engineering) تعتمد على:
+                <br>
+                <label><input type="radio" name="m2q5" value="a"> التلاعب النفسي بالضحايا</label><br>
+                <label><input type="radio" name="m2q5" value="b"> استخدام برامج متقدمة فقط</label><br>
+                <label><input type="radio" name="m2q5" value="c"> قوة الشبكات</label>
+            </li>
+        </ol>
+        
+        <div style="text-align:center;margin-top:15px;">
+            <button class="btn" onclick="submitModuleExam(2)">إرسال النتيجة</button>
+        </div>
+        <h3 id="module2-result" style="text-align:center;margin-top:15px;"></h3>
+    </div>
+</section>
+
+<!-- Module 3 Exam -->
+<section id="module3-exam" class="section">
+    <div class="card" style="text-align:right;">
+        <h2 style="text-align:center;">📝 اختبار الموديول الثالث: حماية الحسابات والبيانات الشخصية</h2>
+        <p>أجب عن الأسئلة التالية، ثم اضغط على "إرسال النتيجة":</p>
+        
+        <ol style="line-height:1.9;">
+            <li>
+                من خصائص كلمة المرور القوية:
+                <br>
+                <label><input type="radio" name="m3q1" value="a"> أن تكون قصيرة وسهلة التذكر</label><br>
+                <label><input type="radio" name="m3q1" value="b"> أن تكون طويلة وتحتوي على حروف وأرقام ورموز</label><br>
+                <label><input type="radio" name="m3q1" value="c"> أن تكون تاريخ ميلادك</label>
+            </li><br>
+            
+            <li>
+                المصادقة الثنائية (2FA) تضيف:
+                <br>
+                <label><input type="radio" name="m3q2" value="a"> طبقة حماية إضافية بجانب كلمة المرور</label><br>
+                <label><input type="radio" name="m3q2" value="b"> مزيد من التعقيد بدون فائدة</label><br>
+                <label><input type="radio" name="m3q2" value="c"> إلغاء كلمة المرور</label>
+            </li><br>
+            
+            <li>
+                من العلامات الشائعة لاختراق الحسابات:
+                <br>
+                <label><input type="radio" name="m3q3" value="a"> تلقي رسائل لم ترسلها</label><br>
+                <label><input type="radio" name="m3q3" value="b"> تحسن أداء الجهاز</label><br>
+                <label><input type="radio" name="m3q3" value="c"> زيادة سرعة الإنترنت</label>
+            </li><br>
+            
+            <li>
+                أدوات إدارة كلمات المرور تساعد على:
+                <br>
+                <label><input type="radio" name="m3q4" value="a"> نسيان جميع كلمات المرور</label><br>
+                <label><input type="radio" name="m3q4" value="b"> إنشاء وتخزين كلمات مرور قوية وآمنة</label><br>
+                <label><input type="radio" name="m3q4" value="c"> مشاركة كلمات المرور مع الآخرين</label>
+            </li><br>
+            
+            <li>
+                من الأخطاء الشائعة في إدارة الحسابات:
+                <br>
+                <label><input type="radio" name="m3q5" value="a"> استخدام كلمة المرور نفسها لكل الحسابات</label><br>
+                <label><input type="radio" name="m3q5" value="b"> تغيير كلمة المرور بانتظام</label><br>
+                <label><input type="radio" name="m3q5" value="c"> استخدام المصادقة الثنائية</label>
+            </li>
+        </ol>
+        
+        <div style="text-align:center;margin-top:15px;">
+            <button class="btn" onclick="submitModuleExam(3)">إرسال النتيجة</button>
+        </div>
+        <h3 id="module3-result" style="text-align:center;margin-top:15px;"></h3>
+    </div>
+</section>
+
+<!-- Module 4 Exam -->
+<section id="module4-exam" class="section">
+    <div class="card" style="text-align:right;">
+        <h2 style="text-align:center;">📝 اختبار الموديول الرابع: أمن الشبكات والاتصال بالإنترنت</h2>
+        <p>أجب عن الأسئلة التالية، ثم اضغط على "إرسال النتيجة":</p>
+        
+        <ol style="line-height:1.9;">
+            <li>
+                من أنواع الشبكات:
+                <br>
+                <label><input type="radio" name="m4q1" value="a"> LAN و WAN و WLAN</label><br>
+                <label><input type="radio" name="m4q1" value="b"> فقط شبكة الإنترنت</label><br>
+                <label><input type="radio" name="m4q1" value="c"> الشبكات السلكية فقط</label>
+            </li><br>
+            
+            <li>
+                جهاز الـ Router يقوم بـ:
+                <br>
+                <label><input type="radio" name="m4q2" value="a"> ربط شبكتك الداخلية بالإنترنت الخارجي</label><br>
+                <label><input type="radio" name="m4q2" value="b"> تشغيل التطبيقات فقط</label><br>
+                <label><input type="radio" name="m4q2" value="c"> طباعة المستندات</label>
+            </li><br>
+            
+            <li>
+                خطورة الشبكات المفتوحة (Public Wi-Fi) تكمن في:
+                <br>
+                <label><input type="radio" name="m4q3" value="a"> التجسس على بياناتك وسرقة المعلومات</label><br>
+                <label><input type="radio" name="m4q3" value="b"> أنها أبطأ من الشبكات المنزلية</label><br>
+                <label><input type="radio" name="m4q3" value="c"> أنها مجانية</label>
+            </li><br>
+            
+            <li>
+                هجوم MITM (Man-In-The-Middle) يعني:
+                <br>
+                <label><input type="radio" name="m4q4" value="a"> اعتراض الاتصال بين جهازين وقراءة البيانات</label><br>
+                <label><input type="radio" name="m4q4" value="b"> إرسال فيروسات فقط</label><br>
+                <label><input type="radio" name="m4q4" value="c"> حماية الشبكة</label>
+            </li><br>
+            
+            <li>
+                من طرق تأمين الشبكات المنزلية:
+                <br>
+                <label><input type="radio" name="m4q5" value="a"> استخدام كلمة مرور قوية للـ Wi-Fi</label><br>
+                <label><input type="radio" name="m4q5" value="b"> ترك الإعدادات الافتراضية</label><br>
+                <label><input type="radio" name="m4q5" value="c"> مشاركة كلمة المرور مع الجيران</label>
+            </li>
+        </ol>
+        
+        <div style="text-align:center;margin-top:15px;">
+            <button class="btn" onclick="submitModuleExam(4)">إرسال النتيجة</button>
+        </div>
+        <h3 id="module4-result" style="text-align:center;margin-top:15px;"></h3>
+    </div>
+</section>
+
+<!-- Module 5 Exam -->
+<section id="module5-exam" class="section">
+    <div class="card" style="text-align:right;">
+        <h2 style="text-align:center;">📝 اختبار الموديول الخامس: أمن البريد الإلكتروني والتطبيقات</h2>
+        <p>أجب عن الأسئلة التالية، ثم اضغط على "إرسال النتيجة":</p>
+        
+        <ol style="line-height:1.9;">
+            <li>
+                من مخاطر البريد الإلكتروني غير الآمن:
+                <br>
+       <label><input type="radio" name="m5q1" value="a"> التصيد الاحتيالي (Phishing)</label><br>
+                <label><input type="radio" name="m5q1" value="b"> تحسين سرعة الإنترنت</label><br>
+                <label><input type="radio" name="m5q1" value="c"> زيادة سعة التخزين</label>
+            </li><br>
+            
+            <li>
+                كيف تتعرف على الرسائل الاحتيالية؟
+                <br>
+                <label><input type="radio" name="m5q2" value="a"> وجود أخطاء لغوية وعنوان بريد غير معتاد</label><br>
+                <label><input type="radio" name="m5q2" value="b"> أنها مرسلة من صديقك</label><br>
+                <label><input type="radio" name="m5q2" value="c"> أنها تحتوي على صور جميلة</label>
+            </li><br>
+            
+            <li>
+                من مخاطر التطبيقات غير الموثوقة:
+                <br>
+                <label><input type="radio" name="m5q3" value="a"> سرقة البيانات والتجسس</label><br>
+                <label><input type="radio" name="m5q3" value="b"> تحسين أداء الهاتف</label><br>
+                <label><input type="radio" name="m5q3" value="c"> زيادة سعة البطارية</label>
+            </li><br>
+            
+            <li>
+                الصلاحيات (Permissions) في التطبيقات:
+                <br>
+                <label><input type="radio" name="m5q4" value="a"> يجب منع الصلاحيات غير الضرورية</label><br>
+                <label><input type="radio" name="m5q4" value="b"> يجب منح جميع الصلاحيات</label><br>
+                <label><input type="radio" name="m5q4" value="c"> لا أهمية لها</label>
+            </li><br>
+            
+            <li>
+                من إرشادات الاستخدام الآمن للمتاجر الرقمية:
+                <br>
+                <label><input type="radio" name="m5q5" value="a"> تحميل التطبيقات من المتاجر الرسمية فقط</label><br>
+                <label><input type="radio" name="m5q5" value="b"> تحميل التطبيقات المعدلة (MOD APK)</label><br>
+                <label><input type="radio" name="m5q5" value="c"> عدم قراءة التقييمات</label>
+            </li>
+        </ol>
+        
+        <div style="text-align:center;margin-top:15px;">
+            <button class="btn" onclick="submitModuleExam(5)">إرسال النتيجة</button>
+        </div>
+        <h3 id="module5-result" style="text-align:center;margin-top:15px;"></h3>
+    </div>
+</section>
+
+<!-- Module 6 Exam -->
+<section id="module6-exam" class="section">
+    <div class="card" style="text-align:right;">
+        <h2 style="text-align:center;">📝 اختبار الموديول السادس: الوعي السيبراني والتثقيف الذاتي</h2>
+        <p>أجب عن الأسئلة التالية، ثم اضغط على "إرسال النتيجة":</p>
+        
+        <ol style="line-height:1.9;">
+            <li>
+                الوعي السيبراني يعني:
+                <br>
+                <label><input type="radio" name="m6q1" value="a"> فهم المخاطر الرقمية واتخاذ قرارات آمنة</label><br>
+                <label><input type="radio" name="m6q1" value="b"> استخدام الإنترنت فقط</label><br>
+                <label><input type="radio" name="m6q1" value="c"> شراء أجهزة باهظة الثمن</label>
+            </li><br>
+            
+            <li>
+                من ممارسات السلوك الآمن على الإنترنت:
+                <br>
+                <label><input type="radio" name="m6q2" value="a"> عدم مشاركة البيانات الشخصية</label><br>
+                <label><input type="radio" name="m6q2" value="b"> مشاركة كلمات المرور مع الأصدقاء</label><br>
+                <label><input type="radio" name="m6q2" value="c"> استخدام شبكات Wi-Fi العامة للتعاملات البنكية</label>
+            </li><br>
+            
+            <li>
+                من طرق نشر الوعي داخل المؤسسات:
+                <br>
+                <label><input type="radio" name="m6q3" value="a"> الدورات التدريبية المنتظمة</label><br>
+                <label><input type="radio" name="m6q3" value="b"> منع الموظفين من استخدام الإنترنت</label><br>
+                <label><input type="radio" name="m6q3" value="c"> عدم الحديث عن الأمن السيبراني</label>
+            </li><br>
+            
+            <li>
+                أهمية المتابعة والتحديث المستمر تكمن في:
+                <br>
+                <label><input type="radio" name="m6q4" value="a"> ظهور تهديدات جديدة يوميًا</label><br>
+                <label><input type="radio" name="m6q4" value="b"> أن التكنولوجيا لا تتغير</label><br>
+                <label><input type="radio" name="m6q4" value="c"> أن الهجمات القديمة هي الأكثر خطرًا</label>
+            </li><br>
+            
+            <li>
+                من الأخطاء البشرية المؤدية للاختراق:
+                <br>
+                <label><input type="radio" name="m6q5" value="a"> إعادة استخدام كلمة المرور نفسها</label><br>
+                <label><input type="radio" name="m6q5" value="b"> استخدام المصادقة الثنائية</label><br>
+                <label><input type="radio" name="m6q5" value="c"> تحديث التطبيقات بانتظام</label>
+            </li>
+        </ol>
+        
+        <div style="text-align:center;margin-top:15px;">
+            <button class="btn" onclick="submitModuleExam(6)">إرسال النتيجة</button>
+        </div>
+        <h3 id="module6-result" style="text-align:center;margin-top:15px;"></h3>
+    </div>
+</section>
+
+<!-- CONTACT - صفحة تواصل معنا محسنة -->
+<section id="contact" class="section">
+    <div class="card" style="padding: 30px;">
+        <h2 style="text-align: center; color: #1e3a8a; margin-bottom: 25px; font-size: 1.8rem;">
+            📧 تواصل معنا
+        </h2>
+        
+        <!-- صورة الدكتور -->
+        <div style="text-align: center; margin-bottom: 25px;">
+            <div style="position: relative; display: inline-block;">
+                <img src="../assets/images/dr2.jpg" alt="الدكتور" 
+                     style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid #f3b33d; box-shadow: 0 8px 20px rgba(0,0,0,0.15); transition: transform 0.3s;">
+                <div style="position: absolute; bottom: 5px; right: 5px; background: #f3b33d; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border: 2px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+                    <span style="font-size: 0.9rem;">👩‍🏫</span>
+                </div>
+            </div>
+            <h3 style="color: #1e3a8a; margin: 12px 0 5px; font-size: 1.2rem;">أ.د/ نجلاء سعيد</h3>
+            <p style="color: #b8860b; font-size: 0.85rem; font-weight: 500;">المشرف العلمي على المنصة</p>
+            <div style="display: flex; justify-content: center; gap: 15px; margin-top: 10px;">
+                <span style="color: #4a6fa5; font-size: 0.75rem;">📧 Drnaglaa2070@gmail.com</span>
+                
+            </div>
+        </div>
+        
+        <!-- خط فاصل -->
+        <div style="height: 2px; background: linear-gradient(90deg, transparent, #f3b33d, #4299e1, #f3b33d, transparent); margin: 20px 0;"></div>
+        
+        <!-- نموذج التواصل -->
+        <form class="contact-form" style="max-width: 500px; margin: 0 auto;">
+            <div style="margin-bottom: 18px;">
+                <label style="display: block; text-align: right; margin-bottom: 6px; color: #2c5282; font-weight: 500; font-size: 0.85rem;">
+                    👤 الاسم كاملاً
+                </label>
+                <input type="text" name="name" required 
+                       style="width: 100%; padding: 12px 15px; border: 1.5px solid #e2e8f0; border-radius: 12px; font-size: 0.9rem; transition: all 0.3s; box-sizing: border-box;">
+            </div>
+            
+            <div style="margin-bottom: 18px;">
+                <label style="display: block; text-align: right; margin-bottom: 6px; color: #2c5282; font-weight: 500; font-size: 0.85rem;">
+                    📧 البريد الإلكتروني
+                </label>
+                <input type="email" name="email" required 
+                       style="width: 100%; padding: 12px 15px; border: 1.5px solid #e2e8f0; border-radius: 12px; font-size: 0.9rem; transition: all 0.3s; box-sizing: border-box;">
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; text-align: right; margin-bottom: 6px; color: #2c5282; font-weight: 500; font-size: 0.85rem;">
+                    💬 الرسالة
+                </label>
+                <textarea name="message" required rows="5" 
+                          style="width: 100%; padding: 12px 15px; border: 1.5px solid #e2e8f0; border-radius: 12px; font-size: 0.9rem; resize: vertical; font-family: inherit; box-sizing: border-box;"></textarea>
+            </div>
+            
+            <button type="submit" class="btn" 
+                    style="width: 100%; padding: 12px; background: linear-gradient(135deg, #4299e1, #3182ce); color: white; border: none; border-radius: 12px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s;">
+                ✨ إرسال الرسالة ✨
+            </button>
+        </form>
+        
+        <!-- معلومات إضافية -->
+        <div style="text-align: center; margin-top: 25px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
+            <p style="color: #4a6fa5; font-size: 0.75rem;">
+                🕒 سيتم الرد على استفسارك خلال 24 ساعة
+            </p>
+            <div style="display: flex; justify-content: center; gap: 20px; margin-top: 12px;">
+                <a href="#" style="color: #4299e1; text-decoration: none; font-size: 0.8rem;">
+                    <i class="fab fa-facebook"></i> فيسبوك
+                </a>
+                <a href="#" style="color: #4299e1; text-decoration: none; font-size: 0.8rem;">
+                    <i class="fab fa-twitter"></i> تويتر
+                </a>
+                <a href="#" style="color: #4299e1; text-decoration: none; font-size: 0.8rem;">
+                    <i class="fab fa-linkedin"></i> لينكدإن
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- SCROLL TO TOP BUTTON -->
+<div class="scroll-top" onclick="scrollToTop()" id="scrollTopBtn">
+    <i class="fa-solid fa-arrow-up"></i>
+</div>
+
+<!-- CHATBOT -->
+<img id="chatbot-btn"
+     src="https://cdn-icons-png.flaticon.com/512/4712/4712009.png"
+     onclick="toggleChat()">
+
+<div id="chatbot-window">
+    <!-- Main Menu -->
+    <div id="chatbot-menu" class="chatbot-menu-container">
+        <h2>🤖 اختر الخدمة</h2>
+        <button class="chatbot-menu-btn" onclick="enterChatbotMode('qa')">
+            <span class="menu-icon">❓</span>
+            <span class="menu-text">أسئلة وأجوبة</span>
+        </button>
+        <button class="chatbot-menu-btn" onclick="enterChatbotMode('chat')">
+            <span class="menu-icon">💬</span>
+            <span class="menu-text">تحدث مع الذكاء الاصطناعي</span>
+        </button>
+    </div>
+
+    <!-- QA Mode -->
+    <div id="chatbot-qa-mode" class="chatbot-mode" style="display: none;">
+        <div class="chatbot-header">
+            <button class="chatbot-back-btn" onclick="backToMenu()">← رجوع</button>
+            <h2>❓ أسئلة وأجوبة</h2>
+        </div>
+        <input type="text" id="qa-search" placeholder="ابحث عن سؤال..." class="chatbot-search-bar" oninput="filterQA()">
+       <div class="qa-container-container">
+         <div id="qa-container" class="qa-container"></div>
+       </div>
+    </div>
+
+    <!-- Chat Mode -->
+    <div id="chatbot-chat-mode" class="chatbot-mode" style="display: none;">
+        <div class="chatbot-container">
+            <div class="chatbot-header">
+                <button class="chatbot-back-btn" onclick="backToMenu()">← رجوع</button>
+                <h2>💬 الدردشة الذكية</h2>
+            </div>
+
+  <div id="chatbot-messages" class="chatbot-messages"></div>
+            </div>
+            <div class="chatbot-input-area">
+            <input type="text" id="chatbot-input" placeholder="اكتب سؤالك هنا..." class="chatbot-input" onkeypress="if(event.key==='Enter') sendChatMessage()">
+            <button class="chatbot-send-btn" onclick="sendChatMessage()">إرسال</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>
+
